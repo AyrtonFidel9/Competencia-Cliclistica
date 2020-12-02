@@ -30,7 +30,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Calendar x:Name="calendario" Grid.Column="0" Margin="148,24,122,0" Height="200"  VerticalAlignment="Top"></Calendar>
-            <mah:Tile x:Name="tlSimular" Content="Simular" Grid.Column="1" HorizontalAlignment="Left" Margin="24,24,0,0" VerticalAlignment="Top" Width="376" Height="200" FontSize="50"/>
+            <mah:Tile x:Name="tlSimular" Content="Simular" Grid.Column="1" Margin="24,24,48,28" Width="Auto" Height="Auto" FontSize="50"/>
 
         </Grid>
 

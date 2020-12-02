@@ -56,7 +56,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="51,177,0,0" TextWrapping="Wrap" Text="3" FontSize="40" VerticalAlignment="Top"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="100" Margin="42,142,0,0" VerticalAlignment="Top" Width="277" Background="White">
-            <Button x:Name="btnAgregar" Margin="13,19,191,18">
+            <Button x:Name="btnAgregar" Margin="13,19,191,18" Click="btnAgregar_Click">
                 <Button.Content>
                     <iconPacks:FontAwesome Kind="PlusSolid" Height="50" Width="30"></iconPacks:FontAwesome>
                 </Button.Content>

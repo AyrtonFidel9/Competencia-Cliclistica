@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfAppCompetenciaCiclistica.Controles
 {
     /// <summary>
-    /// Lógica de interacción para Competencia.xaml
+    /// Lógica de interacción para IngresoCompetencia.xaml
     /// </summary>
-    public partial class Competencia : UserControl
+    public partial class IngresoCompetencia : Window
     {
-        public Competencia()
+        public IngresoCompetencia()
         {
             InitializeComponent();
         }
 
-        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
-            IngresoCompetencia objIngreso = new IngresoCompetencia();
-            objIngreso.ShowDialog();
+            this.Close();
         }
     }
 }
