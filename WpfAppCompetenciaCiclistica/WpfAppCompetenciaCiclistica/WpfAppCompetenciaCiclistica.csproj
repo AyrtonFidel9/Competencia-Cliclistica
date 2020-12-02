@@ -167,6 +167,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controles\Etapas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\IngresarEtapas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\IngresoCompetencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +193,12 @@
     </Compile>
     <Compile Include="Controles\Competencia.xaml.cs">
       <DependentUpon>Competencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Etapas.xaml.cs">
+      <DependentUpon>Etapas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\IngresarEtapas.xaml.cs">
+      <DependentUpon>IngresarEtapas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\IngresoCompetencia.xaml.cs">
       <DependentUpon>IngresoCompetencia.xaml</DependentUpon>

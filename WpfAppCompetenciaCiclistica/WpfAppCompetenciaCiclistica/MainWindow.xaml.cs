@@ -50,6 +50,9 @@ namespace WpfAppCompetenciaCiclistica
 
                         break;
                     case "Etapas":
+                        txtBTitulo.Text = "Etapas";
+                        frNavegacion.Navigate(new Uri("/Controles/Etapas.xaml", UriKind.Relative));
+
                         break;
                     case "Ciclistas":
                         break;
