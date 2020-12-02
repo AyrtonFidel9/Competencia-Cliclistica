@@ -25,6 +25,7 @@ namespace WpfAppCompetenciaCiclistica
 
         public MainWindow()
         {
+            //txtBTitulo.Text = "Inicio";
         }
 
         //evento para navegar/llamar a los controles o paginas
@@ -44,6 +45,8 @@ namespace WpfAppCompetenciaCiclistica
                         frNavegacion.Navigate(new Uri("/Controles/Inicio.xaml", UriKind.Relative));
                         break;
                     case "Competencia":
+                        txtBTitulo.Text = "Competencia";
+                        frNavegacion.Navigate(new Uri("/Controles/Competencia.xaml", UriKind.Relative));
 
                         break;
                     case "Etapas":

@@ -13,16 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace WpfAppCompetenciaCiclistica.Controles
 {
-    using MahApps.Metro.Controls;
     /// <summary>
-    /// Lógica de interacción para Inicio.xaml
+    /// Lógica de interacción para Competencia.xaml
     /// </summary>
-    public partial class Inicio : UserControl
+    public partial class Competencia : UserControl
     {
-        public Inicio()
+        public Competencia()
         {
             InitializeComponent();
         }
