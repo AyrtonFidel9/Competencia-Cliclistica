@@ -6,16 +6,17 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:WpfAppCompetenciaCiclistica"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:uc="clr-namespace:WpfAppCompetenciaCiclistica.Controles"
         mc:Ignorable="d"
         Title="Competencia Ciclística" Height="650" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
     <mah:MetroWindow.Resources>
     </mah:MetroWindow.Resources>
     <Grid>
-        <mah:HamburgerMenu   x:Name="HamburgerMenuControl"
+        <mah:HamburgerMenu  x:Name="menu"
             Foreground="White" 
              OpenPaneLength="240" 
             DisplayMode="CompactInline" CompactPaneLength="48"
-            HamburgerHeight="48" IsPaneOpen="False">
+            HamburgerHeight="48" IsPaneOpen="False" ItemClick="HamburgerMenuControl_ItemClick" OptionsItemClick="HamburgerMenuControl_OnItemClick" ItemInvoked="menu_ItemInvoked">
             <mah:HamburgerMenu.ItemTemplate >
                 <DataTemplate>
                     <Grid Height="50">
@@ -50,10 +51,10 @@
 
             <mah:HamburgerMenu.ItemsSource>
                 <mah:HamburgerMenuItemCollection>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/casa.png" Label="Inicio"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/competencia.png" Label="Competencia"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ruta.png" Label="Etapas"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ciclista.png" Label="Ciclistas"/>
+                    <mah:HamburgerMenuGlyphItem x:Name="pesInicio" Glyph="/Images/casa.png" Label="Inicio" Tag="Inicio"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/competencia.png" Label="Competencia" Tag="Competencia"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ruta.png" Label="Etapas" Tag="Etapas"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ciclista.png" Label="Ciclistas" Tag="Ciclistas"/>
                 </mah:HamburgerMenuItemCollection>
             </mah:HamburgerMenu.ItemsSource>
             <mah:HamburgerMenu.ContentTemplate>
@@ -91,9 +92,12 @@
                     </Grid>
                 </DataTemplate>
             </mah:HamburgerMenu.ContentTemplate>
-            <Frame Content="Frame" x:Name="frNavegacion" Margin="0,0,0,1" HorizontalAlignment="Right" Width="896"/>
+            <Frame x:Name="frNavegacion" HorizontalAlignment="Right" Height="573" Width="896"
+                    NavigationUIVisibility="Hidden" Source="/Controles/Inicio.xaml" />
+            
 
         </mah:HamburgerMenu>
+        <TextBlock x:Name="txtBTitulo" Margin="375,0,331,575"  TextAlignment="Center" FontSize="34"/>
 
     </Grid>
 </mah:MetroWindow>
