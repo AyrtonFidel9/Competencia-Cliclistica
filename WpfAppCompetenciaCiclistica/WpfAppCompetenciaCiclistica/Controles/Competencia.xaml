@@ -19,8 +19,8 @@
         </DataGrid>
         <Grid x:Name="grdPodio" HorizontalAlignment="Left" Height="235" Margin="42,305,0,0" VerticalAlignment="Top" Width="277" Background="White">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="117" Margin="98,108,0,0" Stroke="Black" VerticalAlignment="Top" Width="76"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="40" Margin="22,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="76"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="63" Margin="174,162,0,0" Stroke="Black" VerticalAlignment="Top" Width="76"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="40" Margin="23,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="76"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="63" Margin="173,162,0,0" Stroke="Black" VerticalAlignment="Top" Width="76"/>
             <TextBlock x:Name="txtBPrimero" HorizontalAlignment="Left" Margin="121,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
@@ -51,9 +51,9 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Left" Margin="124,177,0,0" TextWrapping="Wrap" Text="1" FontSize="40" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="202,177,0,0" TextWrapping="Wrap" Text="2" FontSize="40" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="47,177,0,0" TextWrapping="Wrap" Text="3" FontSize="40" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="126,177,0,0" TextWrapping="Wrap" Text="1" FontSize="40" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="200,177,0,0" TextWrapping="Wrap" Text="2" FontSize="40" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="51,177,0,0" TextWrapping="Wrap" Text="3" FontSize="40" VerticalAlignment="Top"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="100" Margin="42,142,0,0" VerticalAlignment="Top" Width="277" Background="White">
             <Button x:Name="btnAgregar" Margin="13,19,191,18">
@@ -75,7 +75,6 @@
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="42,278,0,0" TextWrapping="Wrap" Text="Podio" FontSize="20" VerticalAlignment="Top"/>
         <TextBlock Margin="213,38,203,0" TextWrapping="Wrap" Text="Nombre de la competencia" FontSize="40" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="351,115,0,0" TextWrapping="Wrap" Text="Clasificación" FontSize="20" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
