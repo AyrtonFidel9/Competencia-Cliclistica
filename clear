@@ -1,0 +1,115 @@
+[33mcommit 08a798a900dd219e4dd684c09e5a22e094ebaf11[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 21:16:34 2020 -0500
+
+    e agrego color al marco del ingreso de competencia
+
+[33mcommit d17eaa97a5e93a94ba969e45119fe3cc949c642b[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 21:00:03 2020 -0500
+
+    Agregado la parte de John
+    Se  ha agregado la parte de los ciclistas y su ingreso
+
+[33mcommit fd7d0324a716443ff4f294acf17833cb2ecf0ee4[m[33m ([m[1;31morigin/Etapas[m[33m)[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 19:47:17 2020 -0500
+
+    Puestos los estilos del ingrear etapas
+
+[33mcommit 6a3f5305a632117a343c1fd69929a444c58099f0[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 19:26:34 2020 -0500
+
+    Poniendo color y fonts al proyecto
+
+[33mcommit a572d3e1d251ff7c460727633775e9a8ee6fb993[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 14:08:56 2020 -0500
+
+    Creacion de la interfaz de Etapas
+    Se creo la interfaz de etapas y se la llamo desde el menu
+
+[33mcommit e528c64b7a7f9859aff3c20aa225503b3b9b1aee[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 09:37:44 2020 -0500
+
+    Se ha agregado la carpeta para abrir IngresoCompetencia
+
+[33mcommit 104537644a8e236243bb9cd4c7039cd399fd1e02[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Wed Dec 2 09:10:01 2020 -0500
+
+    Se creo el formualrio de ingreso de datos
+    Creacion mediante un Window y se creo el formuario asi como la saliga
+    del boton regresar
+
+[33mcommit 48158ea84b7788b25dc975b1f737987620d42aca[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Tue Dec 1 23:27:27 2020 -0500
+
+    ...
+
+[33mcommit 188a76a621f5d7f3bec0e06827b163db888a5ac8[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Tue Dec 1 23:23:40 2020 -0500
+
+    Creación de la interfaz competencia
+    Se creo la interfaz competencia y se programo el boton que la invoca
+
+[33mcommit 6293defef9dd9250feadf642f1e1851f44f34049[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Tue Dec 1 22:51:14 2020 -0500
+
+    Interfaz Inicio creada
+    Se ha creado la interfaz inicio y se a procedido a llamarla mediante
+    codigo desde el MAINWINDOWS.XAML.CS
+
+[33mcommit 55f82f4ff2f5238d45e57c3491cbc49708d1f3d9[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Tue Dec 1 20:33:04 2020 -0500
+
+    Se ha desarrollado la el menu
+
+[33mcommit 342e01866763f18fc8f96ea9b1ff37f209b6fc1d[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 23:01:41 2020 -0500
+
+    configuracion finalizada
+
+[33mcommit e1ac089e44370672bc827a6ff1c6556f03c59a83[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 22:58:43 2020 -0500
+
+    archivos preparados final
+
+[33mcommit 2e1f72657ddd19d7d7ae812a15563cbf3066ee1d[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 22:57:37 2020 -0500
+
+    Archivos preparados
+
+[33mcommit 2a437ba390e4089619d8efcc510a9dc0de14e983[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 22:38:36 2020 -0500
+
+    Agregación de librerias para que funcione mahapps.metro
+
+[33mcommit 503ac6b98744fab71edda583cd65a802c7647215[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 22:32:54 2020 -0500
+
+    Instalación de frameworks
+    Se ha instalado mahapps.metro y mahapps.metro.iconpack en el proyecto
+
+[33mcommit 7b8257011ae60665aad182d2c71514dc568a7a43[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 22:13:35 2020 -0500
+
+    Se vinculo el wpf al proyecto
+
+[33mcommit 552c44772f04d7b0e59a8bae501d0932eec76c0a[m
+Author: Ayrton Avalos <ayrtonfidel9@gmail.com>
+Date:   Mon Nov 30 08:34:53 2020 -0500
+
+    Se ha agregado el .gitignore en el proyecto
