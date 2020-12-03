@@ -8,7 +8,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="Ingresar datos de la competencia" Height="578.5" Width="522.5" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" 
-        WindowStyle="None" BorderThickness="1">
+        WindowStyle="None" BorderThickness="1" BorderBrush="#33A133">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15"/>
@@ -21,7 +21,7 @@
             <RowDefinition/>
             <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="Black"></Grid>
+        <Grid Grid.Row="0" Background="#33A133"></Grid>
         <TextBlock Grid.Row="1" Margin="56,20,42,0" TextWrapping="Wrap" Text="Ingrese los datos de la competencia" FontSize="25" Height="34" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock Grid.Row="2" Name="txtNombre" Text="Nombre" Margin="100,12,329,21" FontSize="20" RenderTransformOrigin="0.581,0.206"/>
         <TextBox Grid.Row="2" Margin="230,13,97,21" />
@@ -34,7 +34,7 @@
         <mah:MetroProgressBar x:Name="estado" HorizontalAlignment="Left" Height="26" Margin="98,19,0,0" Grid.Row="6" VerticalAlignment="Top" Width="325"/>
         <Button Content="Regresar" x:Name="btnRegresar" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="145" Height="45" FontSize="13" Click="btnRegresar_Click"/>
         <Button Content="Ingresar" x:Name="btnIngresar" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="145" Height="45" FontSize="13"/>
-        <Grid Grid.Row="8" Background="Black"/>
+        <Grid Grid.Row="8" Background="#33A133"/>
 
     </Grid>
 </Window>
