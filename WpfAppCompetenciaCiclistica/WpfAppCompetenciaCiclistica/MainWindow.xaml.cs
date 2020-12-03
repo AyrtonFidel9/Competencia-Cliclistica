@@ -55,6 +55,8 @@ namespace WpfAppCompetenciaCiclistica
 
                         break;
                     case "Ciclistas":
+                        txtBTitulo.Text = "Ciclistas";
+                        frNavegacion.Navigate(new Uri("/Controles/Ciclistas.xaml", UriKind.Relative));
                         break;
 
                 }
