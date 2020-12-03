@@ -29,18 +29,17 @@
         <Grid Grid.Row="0" Background="#FF33A133" />
         <TextBlock Text="Ingresar los datos de una etapa" Margin="74,14,60,9" Grid.Row="1" FontSize="25" FontWeight="Bold" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black"/>
         <TextBlock Text="Kilómetros" Margin="106,17,307,13" Grid.Row="2" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-        <TextBox Grid.Row="2" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+        <TextBox Grid.Row="2" Name="txtKilometrosEtapa" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
         <TextBlock Text="Ubicación" Margin="106,17,307,13" Grid.Row="3" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-        <TextBox Grid.Row="3" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+        <TextBox Grid.Row="3" Name="txtUbicacionEtapa" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
         <TextBlock Text="N° Etapa" Margin="107,17,305,13" Grid.Row="4" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-        <TextBox Grid.Row="4" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+        <TextBox Grid.Row="4" Name="txtNumEtapa" Margin="218,17,103,13" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
         <TextBlock Text="Descripción" Margin="104,14,282,126" Grid.Row="5" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-        <RichTextBox Grid.Row="5" Margin="106,48,103,10" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+        <RichTextBox Grid.Row="5" Name="rchDescripciónEtapa" Margin="106,48,103,10" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
 
 
         <mah:MetroProgressBar x:Name="status" HorizontalAlignment="Left" Height="27" Margin="107,12,0,0" Grid.Row="6" VerticalAlignment="Top" Width="301"/>
-        <Button x:Name="btnRegresar" Grid.Row="7" Margin="102,0,275,10" Content="Regresar" FontSize="18" Click="btnRegresar_Click" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula ExtraBold" ></Button>
-        <Button Grid.Row="7" Margin="269,0,108,10" Content="Ingresar" FontSize="18" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula ExtraBold" />
+        <Button x:Name="btnIngresarEtapa" Grid.Row="7" Margin="181,0,196,10" Content="Ingresar" FontSize="18" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula ExtraBold" />
         <Grid Grid.Row="8" Background="#FF33A133" Margin="0,0,0,0"></Grid>
 
     </Grid>

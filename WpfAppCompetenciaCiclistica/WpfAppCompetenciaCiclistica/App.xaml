@@ -2,9 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfAppCompetenciaCiclistica"
+             xmlns:m="clr-namespace:WpfAppCompetenciaCiclistica.Clases"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+       
         <ResourceDictionary>
+            <m:clase1 x:Key="Ciclista"></m:clase1>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />

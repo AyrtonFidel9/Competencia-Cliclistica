@@ -28,8 +28,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            IngresoCompetencia objIngreso = new IngresoCompetencia();
-            objIngreso.ShowDialog();
+            this.flyIngresoCiclistas.IsOpen = true;
         }
     }
 }

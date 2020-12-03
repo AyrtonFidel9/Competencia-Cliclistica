@@ -48,7 +48,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
 
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        private void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("activado");
             eliminar = true;
@@ -65,7 +65,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
             }
         }
 
-        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        private void btnAgregarEtapa_Click(object sender, RoutedEventArgs e)
         {
             IngresarEtapas objIngresar = new IngresarEtapas();
             objIngresar.ShowDialog();

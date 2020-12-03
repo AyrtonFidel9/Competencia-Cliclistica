@@ -6,17 +6,527 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:WpfAppCompetenciaCiclistica"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        
         xmlns:uc="clr-namespace:WpfAppCompetenciaCiclistica.Controles"
         mc:Ignorable="d"
         Title="Competencia Ciclística" Height="650" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
     <mah:MetroWindow.Resources>
+
         <Style x:Key="Nunito-Bold">
             <Style.Setters>
-                <Setter Property="TextElement.FontFamily" Value="/Fonts/Nunito-Bold.ttf"></Setter>
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Nunito Bold"></Setter>
             </Style.Setters>
         </Style>
     </mah:MetroWindow.Resources>
     <Grid>
+
+        <!--ESPACIO DEL INICIO-->
+
+        <Grid x:Name="grInicio" HorizontalAlignment="Right" Margin="0,51,10,0" Width="885" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="320"/>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" Margin="0,0,0,-126" Height="252" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition   />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Calendar x:Name="calendario" Grid.Column="0" Margin="36,10,220,0" Height="214"  VerticalAlignment="Top"/>
+                <TextBlock x:Name="Reloj" Grid.Column="0" Margin="0,10,5,193" Text="00,000,00" FontSize="40" HorizontalAlignment="Right" Width="175" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Lilita One" />
+                <mah:Tile x:Name="tlSimular" Content="Simular" Grid.Column="1" Margin="24,10,48,28" Width="Auto" Height="Auto" FontSize="50" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito" FontWeight="Bold" >
+                    <mah:Tile.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF1F8700" Offset="0"/>
+                            <GradientStop Color="#FF034D06" Offset="1"/>
+                        </LinearGradientBrush>
+                    </mah:Tile.Background>
+                </mah:Tile>
+
+            </Grid>
+
+            <Image Grid.Row="0" Margin="36,22,42,25" Source="/WpfAppCompetenciaCiclistica;component/Images/carrera.jpg" Stretch="UniformToFill"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--ESPACIO DE LA COMPETENCIA-->
+        <Grid x:Name="grCompetencia" Height="570" VerticalAlignment="Bottom" Visibility="Hidden" HorizontalAlignment="Right" Width="895">
+            <DataGrid HorizontalAlignment="Left" Height="416" Margin="351,124,0,0" VerticalAlignment="Top" 
+                      Width="508" BorderThickness="1" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Apellido" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Equipo" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Número"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tiempo" Width="135" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid x:Name="grdPodio" HorizontalAlignment="Left" Height="246" Margin="42,294,0,0" VerticalAlignment="Top" Width="277">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#E4A1F0CE" Offset="0"/>
+                        <GradientStop Color="#FF2FAD76" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Rectangle HorizontalAlignment="Left" Height="117" Margin="98,108,0,0" Stroke="Black" VerticalAlignment="Top" Width="76">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4E4E4" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle HorizontalAlignment="Left" Height="40" Margin="23,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="76">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFD1D1D1" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle HorizontalAlignment="Left" Height="63" Margin="173,162,0,0" Stroke="Black" VerticalAlignment="Top" Width="76">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="LightGray"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock x:Name="txtBPrimero" HorizontalAlignment="Left" Margin="121,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="15" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-53.395"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="txtBSegundo" HorizontalAlignment="Left" Margin="197,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-53.395"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="txtBTercero" HorizontalAlignment="Left" Margin="43,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-53.395"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="126,177,0,0" TextWrapping="Wrap" Text="1" FontSize="40" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="200,177,0,0" TextWrapping="Wrap" Text="2" FontSize="40" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="51,177,0,0" TextWrapping="Wrap" Text="3" FontSize="40" VerticalAlignment="Top"/>
+            </Grid>
+
+            <GroupBox Margin="42,124,576,329" Header="Opciones">
+                <Grid Margin="0,0,14,-3"  Background="White">
+                    <Button x:Name="btnAgregarCompetencia" Margin="13,10,170,13" Click="btnAgregarCompetencia_Click">
+                        <Button.Content>
+                            <iconPacks:FontAwesome Kind="PlusSolid" Height="50" Width="30"></iconPacks:FontAwesome>
+                        </Button.Content>
+
+                    </Button>
+                    <Button x:Name="btnEliminar" Margin="101,10,82,13">
+                        <Button.Content>
+                            <iconPacks:BootstrapIcons Kind="TrashFill" Height="50" Width="25"></iconPacks:BootstrapIcons>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnModificar" Margin="191,10,0,13">
+                        <Button.Content>
+                            <iconPacks:BootstrapIcons Kind="PencilSquare" Width="30" Height="40" ></iconPacks:BootstrapIcons>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <TextBlock HorizontalAlignment="Left" Margin="42,264,0,0" TextWrapping="Wrap" Text="Podio" FontSize="20" VerticalAlignment="Top" FontWeight="Bold" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black" Height="25"/>
+            <TextBlock Margin="93,29,64,0" TextWrapping="Wrap" Text="(Inserte el nombre de la competencia)" FontSize="40" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black" Height="53"/>
+            <mah:FlyoutsControl  HorizontalAlignment="Right">
+                <mah:Flyout  x:Name="flyIngresoCiclistas" Position="Right" Width="400">
+                    <StackPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
+                            <TextBlock Width="110" Text="Nombre" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
+                            <TextBox  Name="txtNombreCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Width="110" Text="Ubicación" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <TextBox  Name="txtUbicacionCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
+                            <TextBlock Width="110" Text="Descripción" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
+                            <RichTextBox x:Name="rchDescripcionCompetencia" Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                        </WrapPanel>
+                        <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Width="110" Text="N° Ciclistas" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
+                            <TextBox  Name="txtNumCorredoresCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <mah:MetroProgressBar x:Name="estadoCompetencia" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Button Content="Ingresar" x:Name="btnIngresarCompetencia" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        </WrapPanel>
+                    </StackPanel>
+
+
+
+
+                </mah:Flyout>
+
+            </mah:FlyoutsControl>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--ESPACIO ETAPAS-->
+        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="28,10,28,9">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#CC818181" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <WrapPanel HorizontalAlignment="Right" Height="102" VerticalAlignment="Bottom">
+                    <Button x:Name="btnAgregarEtapa" Margin="0,22,20,0" Height="70" Width="70" Click="btnAgregarEtapa_Click">
+                        <Button.Content>
+                            <iconPacks:FontAwesome Kind="PlusSolid" Height="50" Width="30"></iconPacks:FontAwesome>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnEliminarEtapa"  Margin="0,22,20,0" Height="70" Width="70" Click="btnEliminarEtapa_Click">
+                        <Button.Content>
+                            <iconPacks:BootstrapIcons Kind="TrashFill" Height="50" Width="25"></iconPacks:BootstrapIcons>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnModificarEtapa" Margin="0,22,20,0" Height="70" Width="70">
+                        <Button.Content>
+                            <iconPacks:BootstrapIcons Kind="PencilSquare" Width="30" Height="40" ></iconPacks:BootstrapIcons>
+                        </Button.Content>
+                    </Button>
+                </WrapPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="495"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="461"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19" Background="White">
+                    <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1" Background="White" Margin="0,10,28,19" >
+                    <ScrollViewer HorizontalContentAlignment="Center">
+                        <StackPanel x:Name="stack" Width="348" HorizontalAlignment="Right" Height="693">
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </Grid>
+
+
+
+
+
+
+            </Grid>
+            <mah:FlyoutsControl  HorizontalAlignment="Right" Grid.RowSpan="2">
+                <mah:Flyout  x:Name="flyIngresoEtapa" Position="Right" Width="400">
+                    <StackPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
+                            <TextBlock Text="Kilómetros"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <TextBox Name="txtKilometrosEtapa" Width="170" Height="30"   FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Text="Ubicación"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <TextBox  Name="txtUbicacionEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                        </WrapPanel>
+
+
+                        <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Text="N° Etapa"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <TextBox  Name="txtNumEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                        </WrapPanel>
+
+
+                        <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
+                            <TextBlock Text="Descripción"   FontSize="20" Margin="0,3,0,0" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        </WrapPanel>
+
+                        <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
+                            <RichTextBox x:Name="rchDescripcionEtapa"  Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                        </WrapPanel>
+
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <mah:MetroProgressBar x:Name="estadoEtapa" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Button Content="Ingresar" x:Name="btnIngresarEtapa" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </mah:Flyout>
+            </mah:FlyoutsControl>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--ESPACIO CICLISTAS-->
+
+        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Visible">
+            <DataGrid x:Name="dgCiclistas"  HorizontalAlignment="Left" Height="374" Margin="40,166,0,0" 
+                      VerticalAlignment="Top" Width="819"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Width="150" Binding="{Binding Nombre ,Mode=TwoWay}"/>
+                    <DataGridTextColumn Header="Apellido" Width="150" Binding="{Binding Apellido,Mode=TwoWay}" />
+                    <DataGridTextColumn Header="ID" Width="90" Binding="{Binding ID,Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Equipo" Width="120" Binding="{Binding Equipo,Mode=TwoWay}"  />
+                    <DataGridTextColumn Header="Dorsal" Width="120" Binding="{Binding Dorsal,Mode=TwoWay}" />
+                    <DataGridTextColumn Header="País" Width="150" Binding="{Binding Pais,Mode=TwoWay}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Margin="40,26,36,453">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFCBCBCB" Offset="0.993"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Button x:Name="btnAgregarCiclista" Margin="518,10,227,21" Click="btnAgregarCiclista_Click" Content="{iconPacks:BootstrapIcons PersonPlusFill, Width=50,Height=30}" />
+                <Button x:Name="btnEliminarCiclista" Margin="622,10,120,21" Click="btnAcutaliza_Click">
+                    <Button.Content>
+                        <iconPacks:BootstrapIcons Kind="TrashFill" Width="50" Height="30"></iconPacks:BootstrapIcons>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnModificarCiclista" Margin="726,10,13,21" Click="btnAcutaliza_Click">
+                    <Button.Content>
+                        <iconPacks:BootstrapIcons Kind="TrashFill" Width="50" Height="30"></iconPacks:BootstrapIcons>
+                    </Button.Content>
+                </Button>
+
+
+
+            </Grid>
+
+
+            <mah:FlyoutsControl  HorizontalAlignment="Right" >
+                <mah:Flyout x:Name="flyIngresar" Position="Right" Width="500">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition  Height="60"/>
+                            <RowDefinition  Height="60"/>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="1" Text="Nombre" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                        <TextBox Grid.Row="1" Name="txtNombreCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top"
+                        HorizontalAlignment="Left" Width="210" KeyDown="txtNombre_KeyDown"  />
+                        <TextBlock Grid.Row="2"  Text="Apellido" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <TextBox Grid.Row="2" Name="txtApellidoCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtApellido_KeyDown"/>
+                        <TextBlock Grid.Row="3" Text="ID" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="476" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <TextBox Grid.Row="3" Name="txtIDCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtID_KeyDown"/>
+                        <TextBlock Grid.Row="4" Text="Equipo" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <TextBox Grid.Row="4" Name="txtEquipoCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                        <TextBlock Grid.Row="5" Text="Dorsal" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <TextBox Grid.Row="5" x:Name="txtDorsalCiclista" Height="24" Margin="230,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                        <TextBlock Grid.Row="6" Text="País" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <ComboBox Grid.Row="6" Name="comboBoxPaisCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210">
+                            <ComboBoxItem Content="Ecuador"></ComboBoxItem>
+                        </ComboBox>
+                        <Button Grid.Row="7" Name="btnIngresarCiclista" Content="Ingresar"  Margin="210,50,0,-40" FontSize="13" VerticalAlignment="Center" Height="35" HorizontalAlignment="Left" Width="127" Click="btnIngresar_Click" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                        <!-- status bar debe ir aqui-->
+                    </Grid>
+                </mah:Flyout>
+
+            </mah:FlyoutsControl>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <mah:HamburgerMenu  x:Name="menu"
             Foreground="White" 
              OpenPaneLength="240" 
@@ -30,7 +540,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid x:Name="IconPart" Grid.Column="0"
-                          Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}"
+                          Width="{Binding CompactPaneLength, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}"
                           DockPanel.Dock="Left">
                             <Image Margin="4,10,0,0"
                                HorizontalAlignment="Left"
@@ -44,7 +554,7 @@
                             Text="{Binding Label}" />
                     </Grid>
                     <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=PanePlacement}" Value="Right">
+                        <DataTrigger Binding="{Binding PanePlacement, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}" Value="Right">
                             <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
                             <!--<Setter TargetName="TextPart" Property="Margin" Value="8 0 0 0" />-->
                         </DataTrigger>
@@ -85,7 +595,7 @@
                                                              Transition="Default">
                             <mah:TransitioningContentControl.Resources>
                                 <DataTemplate DataType="{x:Type mah:HamburgerMenuGlyphItem}">
-                                    <Image Source="{Binding Glyph, Mode=OneWay, Converter={mah:NullToUnsetValueConverter}}" />
+                                    <Image Source="{Binding Glyph, Converter={mah:NullToUnsetValueConverter}, Mode=OneWay}" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type mah:HamburgerMenuIconItem}">
                                     <ContentControl Content="{Binding Tag, Mode=OneWay}"
@@ -97,12 +607,17 @@
                     </Grid>
                 </DataTemplate>
             </mah:HamburgerMenu.ContentTemplate>
-            <Frame x:Name="frNavegacion" HorizontalAlignment="Right" Height="573" Width="896"
-                    NavigationUIVisibility="Hidden" Source="/Controles/Inicio.xaml" />
-            
+            <!--<Frame x:Name="frNavegacion" HorizontalAlignment="Right" Height="573" Width="896"
+                    NavigationUIVisibility="Hidden" Source="/Controles/Inicio.xaml" />-->
+
 
         </mah:HamburgerMenu>
         <TextBlock x:Name="txtBTitulo" Margin="375,0,331,575"  TextAlignment="Center" FontSize="34"/>
+
+
+
+
+
 
     </Grid>
 </mah:MetroWindow>

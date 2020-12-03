@@ -8,7 +8,7 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="573" d:DesignWidth="896">
-    <Grid>
+    <Grid x:Name="grEtapas">
         <Grid.RowDefinitions>
             <RowDefinition Height="110"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
@@ -16,22 +16,22 @@
         <Grid Grid.Row="0" Margin="28,10,28,9">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF818181" Offset="1"/>
+                    <GradientStop Color="#CC818181" Offset="1"/>
                     <GradientStop Color="White"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <WrapPanel HorizontalAlignment="Right" Height="102" VerticalAlignment="Bottom">
-                <Button x:Name="btnAgregar" Margin="0,22,20,0" Height="70" Width="70" Click="btnAgregar_Click">
+                <Button x:Name="btnAgregarEtapa" Margin="0,22,20,0" Height="70" Width="70" Click="btnAgregarEtapa_Click">
                     <Button.Content>
                         <iconPacks:FontAwesome Kind="PlusSolid" Height="50" Width="30"></iconPacks:FontAwesome>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btnEliminar"  Margin="0,22,20,0" Height="70" Width="70" Click="btnEliminar_Click">
+                <Button x:Name="btnEliminarEtapa"  Margin="0,22,20,0" Height="70" Width="70" Click="btnEliminarEtapa_Click">
                     <Button.Content>
                         <iconPacks:BootstrapIcons Kind="TrashFill" Height="50" Width="25"></iconPacks:BootstrapIcons>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btnModificar" Margin="0,22,20,0" Height="70" Width="70">
+                <Button x:Name="btnModificarEtapa" Margin="0,22,20,0" Height="70" Width="70">
                     <Button.Content>
                         <iconPacks:BootstrapIcons Kind="PencilSquare" Width="30" Height="40" ></iconPacks:BootstrapIcons>
                     </Button.Content>
@@ -58,13 +58,48 @@
 
                 </ScrollViewer>
             </Grid>
+            
+             
 
 
 
 
         </Grid>
+        <mah:FlyoutsControl  HorizontalAlignment="Right">
+            <mah:Flyout  x:Name="flyIngresoCiclistas" Position="Right" Width="400">
+                <StackPanel>
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
+                        <TextBlock Text="Kilómetros" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                        <TextBox Name="txtKilometrosEtapa"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <TextBlock Text="Ubicación" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                        <TextBox  Name="txtUbicacionEtapa" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                    </WrapPanel>
+                  
+
+                    <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <TextBlock Text="N° Etapa" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                        <TextBox  Name="txtNumEtapa" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
+                    </WrapPanel>
 
 
-
+                    <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
+                        <TextBlock Text="Descripción" FontSize="20" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
+                        <RichTextBox x:Name="rchDescripcionEtapa" Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                    </WrapPanel>
+                   
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <mah:MetroProgressBar x:Name="estadoCompetencia" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <Button Content="Ingresar" x:Name="btnIngresarCompetencia" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                    </WrapPanel>
+                </StackPanel>
+            </mah:Flyout>
+        </mah:FlyoutsControl>
     </Grid>
 </UserControl>

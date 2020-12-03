@@ -154,9 +154,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -172,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Etapas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\IngresarCiclista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +201,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Clases\clase1.cs" />
     <Compile Include="Controles\Ciclistas.xaml.cs">
       <DependentUpon>Ciclistas.xaml</DependentUpon>
     </Compile>
@@ -203,6 +210,9 @@
     </Compile>
     <Compile Include="Controles\Etapas.xaml.cs">
       <DependentUpon>Etapas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\IngresarCiclista.xaml.cs">
+      <DependentUpon>IngresarCiclista.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\IngresarEtapas.xaml.cs">
       <DependentUpon>IngresarEtapas.xaml</DependentUpon>
@@ -269,6 +279,7 @@
     <Resource Include="Fonts\Rubik-Regular.ttf" />
     <Resource Include="Fonts\Rubik-SemiBold.ttf" />
     <Resource Include="Fonts\Rubik-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\LilitaOne-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -278,9 +289,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clases\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\casa.png" />
   </ItemGroup>

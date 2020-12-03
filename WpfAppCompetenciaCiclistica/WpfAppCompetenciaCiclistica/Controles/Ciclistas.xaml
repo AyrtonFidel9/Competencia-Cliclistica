@@ -1,26 +1,67 @@
-﻿<UserControl x:Class="WpfAppCompetenciaCiclistica.Controles.Ciclistas"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:m="clr-namespace:WpfAppCompetenciaCiclistica.Clases"
              xmlns:local="clr-namespace:WpfAppCompetenciaCiclistica.Controles"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="WpfAppCompetenciaCiclistica.Controles.Ciclistas"
+             DataContext="{Binding data}"
              mc:Ignorable="d" 
              d:DesignHeight="573" d:DesignWidth="896">
+    <UserControl.Resources>
+        <m:clase1 x:Key="ciclistas" />
+    </UserControl.Resources>
+    <!--<UserControl.DataContext>
+        <Binding Source="{StaticResource Ciclista}"/>
+    </UserControl.DataContext>-->
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="340" Margin="40,200,0,0" VerticalAlignment="Top" Width="819">
+        <DataGrid x:Name="dgCiclistas"  HorizontalAlignment="Left" Height="340" Margin="40,200,0,0" VerticalAlignment="Top" Width="819" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Width="350"></DataGridTextColumn>
-                <DataGridTextColumn Header="Edad" Width="150"></DataGridTextColumn>
-                <DataGridTextColumn Header="NickName" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Empleado"  ></DataGridTextColumn>
-
+                <DataGridTextColumn Header="Nombre"  Binding="{Binding Nombre ,Mode=TwoWay}"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido,Mode=TwoWay}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding ID,Mode=TwoWay}" />
+                <DataGridTextColumn Header="Equipo" Binding="{Binding Equipo,Mode=TwoWay}"  />
+                <DataGridTextColumn Header="Dorsal" Binding="{Binding Dorsal,Mode=TwoWay}" />
+                <DataGridTextColumn Header="País" Binding="{Binding Pais,Mode=TwoWay}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="btnAgregar" Margin="560,70,278,443" >
-            <Button.Content>
-                <iconPacks:BootstrapIcons Kind="PersonPlusFill"></iconPacks:BootstrapIcons>
-            </Button.Content>
-        </Button>
+        <Button x:Name="btnAgregar" Margin="638,75,200,438" Click="btnAgregar_Click" Content="{iconPacks:BootstrapIcons PersonPlusFill}" />
+        <Button x:Name="btnActualizar" Margin="743,75,95,438" Click="btnAcutaliza_Click" Content="{iconPacks:BootstrapIcons PersonPlusFill}" />
+        
+        <mah:FlyoutsControl  HorizontalAlignment="Right" >
+            <mah:Flyout x:Name="flyIngresar" Position="Right" Width="500">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition  Height="60"/>
+                        <RowDefinition  Height="60"/>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Text="Nombre" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="1" Name="txtNombre" Height="24" Margin="230,13,0,0" VerticalAlignment="Top"
+                        HorizontalAlignment="Left" Width="210" KeyDown="txtNombre_KeyDown"  />
+                    <TextBlock Grid.Row="2"  Text="Apellido" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="2" Name="txtApellido" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtApellido_KeyDown"/>
+                    <TextBlock Grid.Row="3" Text="ID" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="476"/>
+                    <TextBox Grid.Row="3" Name="txtID" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtID_KeyDown"/>
+                    <TextBlock Grid.Row="4" Text="Equipo" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="4" Name="txtEquipo" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                    <TextBlock Grid.Row="5" Text="Dorsal" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="5" x:Name="txtDorsal" Height="24" Margin="230,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                    <TextBlock Grid.Row="6" Text="País" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
+                    <ComboBox Grid.Row="6" Name="comboBoxPais" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210">
+                        <ComboBoxItem Content="Ecuador"></ComboBoxItem>
+                    </ComboBox>
+                    <Button Grid.Row="7" Name="btnIngresar" Content="Ingresar"  Margin="210,50,0,-40" FontSize="13" VerticalAlignment="Center" Height="35" HorizontalAlignment="Left" Width="127" Click="btnIngresar_Click"/>
+                    <!-- status bar debe ir aqui-->
+                </Grid>
+            </mah:Flyout>
+            
+        </mah:FlyoutsControl>
     </Grid>
 </UserControl>

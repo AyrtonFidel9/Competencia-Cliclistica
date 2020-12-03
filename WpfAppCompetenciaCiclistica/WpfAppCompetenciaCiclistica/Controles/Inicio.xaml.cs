@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppCompetenciaCiclistica.Clases;
 
 
 namespace WpfAppCompetenciaCiclistica.Controles
@@ -22,9 +23,23 @@ namespace WpfAppCompetenciaCiclistica.Controles
     /// </summary>
     public partial class Inicio : UserControl
     {
+        MainWindow objVen = new MainWindow();
         public Inicio()
         {
             InitializeComponent();
+            
+        }
+
+        private void tlSimular_Click(object sender, RoutedEventArgs e)
+        {
+         
+
+                foreach (clase1 indice in objVen.Competidores)
+                {
+                    MessageBox.Show(indice.Apellido);
+                }
+           
+
         }
     }
 }

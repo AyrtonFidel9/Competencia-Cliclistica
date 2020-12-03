@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#33A133"></Grid>
         <TextBlock Grid.Row="1" Margin="56,20,42,0" TextWrapping="Wrap" Text="Ingrese los datos de la competencia" FontSize="25" Height="34" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock Grid.Row="2" Name="txtNombre" Text="Nombre" Margin="100,12,329,21" FontSize="20" RenderTransformOrigin="0.581,0.206"/>
+        <TextBlock Grid.Row="2" Name="txtNombre" Text="Nombre" Margin="100,12,329,21" FontSize="20" RenderTransformOrigin="0.581,0.206" Width="100"/>
         <TextBox Grid.Row="2" Margin="230,13,97,21" />
         <TextBlock Grid.Row="3" Text="Ubicación" Margin="100,10,329,0" FontSize="20" RenderTransformOrigin="0.581,0.206" Height="38" VerticalAlignment="Top"/>
         <TextBox Grid.Row="3" Name="txtUbicacion" Margin="230,13,97,0" Height="24" VerticalAlignment="Top" />
