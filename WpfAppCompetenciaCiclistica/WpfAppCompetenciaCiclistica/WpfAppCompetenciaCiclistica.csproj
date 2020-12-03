@@ -229,6 +229,39 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Khula-Bold.ttf" />
+    <Resource Include="Fonts\Khula-ExtraBold.ttf" />
+    <Resource Include="Fonts\Khula-Light.ttf" />
+    <Resource Include="Fonts\Khula-Regular.ttf" />
+    <Resource Include="Fonts\Khula-SemiBold.ttf" />
+    <Resource Include="Fonts\Nunito-Black.ttf" />
+    <Resource Include="Fonts\Nunito-BlackItalic.ttf" />
+    <Resource Include="Fonts\Nunito-Bold.ttf" />
+    <Resource Include="Fonts\Nunito-BoldItalic.ttf" />
+    <Resource Include="Fonts\Nunito-ExtraBold.ttf" />
+    <Resource Include="Fonts\Nunito-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Nunito-ExtraLight.ttf" />
+    <Resource Include="Fonts\Nunito-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Nunito-Italic.ttf" />
+    <Resource Include="Fonts\Nunito-Light.ttf" />
+    <Resource Include="Fonts\Nunito-LightItalic.ttf" />
+    <Resource Include="Fonts\Nunito-Regular.ttf" />
+    <Resource Include="Fonts\Nunito-SemiBold.ttf" />
+    <Resource Include="Fonts\Nunito-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Rubik-Black.ttf" />
+    <Resource Include="Fonts\Rubik-BlackItalic.ttf" />
+    <Resource Include="Fonts\Rubik-Bold.ttf" />
+    <Resource Include="Fonts\Rubik-BoldItalic.ttf" />
+    <Resource Include="Fonts\Rubik-ExtraBold.ttf" />
+    <Resource Include="Fonts\Rubik-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Rubik-Italic.ttf" />
+    <Resource Include="Fonts\Rubik-Light.ttf" />
+    <Resource Include="Fonts\Rubik-LightItalic.ttf" />
+    <Resource Include="Fonts\Rubik-Medium.ttf" />
+    <Resource Include="Fonts\Rubik-MediumItalic.ttf" />
+    <Resource Include="Fonts\Rubik-Regular.ttf" />
+    <Resource Include="Fonts\Rubik-SemiBold.ttf" />
+    <Resource Include="Fonts\Rubik-SemiBoldItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -240,7 +273,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Clases\" />
-    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\casa.png" />

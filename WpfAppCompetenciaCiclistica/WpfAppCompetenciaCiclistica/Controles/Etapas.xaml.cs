@@ -25,9 +25,9 @@ namespace WpfAppCompetenciaCiclistica.Controles
         public Etapas()
         {
             InitializeComponent();
-            //crearTilesEtapas("etapa1", "etapa1");
-            //crearTilesEtapas("etapa2", "etapa2");
-            //crearTilesEtapas("etapa3", "etapa3");
+            //crearTilesEtapas("etapa1");
+            //crearTilesEtapas("etapa2");
+            //crearTilesEtapas("etapa3");
         }
 
         private void crearTilesEtapas(string nombre)

@@ -30,7 +30,14 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Calendar x:Name="calendario" Grid.Column="0" Margin="148,24,122,0" Height="200"  VerticalAlignment="Top"></Calendar>
-            <mah:Tile x:Name="tlSimular" Content="Simular" Grid.Column="1" Margin="24,24,48,28" Width="Auto" Height="Auto" FontSize="50"/>
+            <mah:Tile x:Name="tlSimular" Content="Simular" Grid.Column="1" Margin="24,24,48,28" Width="Auto" Height="Auto" FontSize="50" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito" FontWeight="Bold">
+                <mah:Tile.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1F8700" Offset="0"/>
+                        <GradientStop Color="#FF034D06" Offset="1"/>
+                    </LinearGradientBrush>
+                </mah:Tile.Background>
+            </mah:Tile>
 
         </Grid>
 
