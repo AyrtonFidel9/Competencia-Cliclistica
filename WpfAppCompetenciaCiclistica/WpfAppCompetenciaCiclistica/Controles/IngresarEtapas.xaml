@@ -9,6 +9,12 @@
         Title="IngresarEtapas" Height="571" Width="522" WindowStyle="None" WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize" BorderThickness="1" BorderBrush="#33A133">
     <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="WhiteSmoke" Offset="0.251"/>
+                <GradientStop Color="#8CBFBFBF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="15"/>
             <RowDefinition Height="80"/>
