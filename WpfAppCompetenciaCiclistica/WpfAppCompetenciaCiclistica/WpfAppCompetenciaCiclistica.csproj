@@ -201,7 +201,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Clases\clase1.cs" />
+    <Compile Include="Clases\clCiclistas.cs" />
+    <Compile Include="Clases\clEtapas.cs" />
+    <Compile Include="Clases\clValidacion.cs" />
     <Compile Include="Controles\Ciclistas.xaml.cs">
       <DependentUpon>Ciclistas.xaml</DependentUpon>
     </Compile>
@@ -289,7 +291,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\casa.png" />
   </ItemGroup>

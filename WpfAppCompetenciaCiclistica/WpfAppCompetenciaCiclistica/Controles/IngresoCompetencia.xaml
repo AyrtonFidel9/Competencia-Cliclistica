@@ -24,13 +24,13 @@
         <Grid Grid.Row="0" Background="#33A133"></Grid>
         <TextBlock Grid.Row="1" Margin="56,20,42,0" TextWrapping="Wrap" Text="Ingrese los datos de la competencia" FontSize="25" Height="34" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock Grid.Row="2" Name="txtNombre" Text="Nombre" Margin="100,12,329,21" FontSize="20" RenderTransformOrigin="0.581,0.206" Width="100"/>
-        <TextBox Grid.Row="2" Margin="230,13,97,21" />
+        <TextBox x:Name="txtNombre1" Grid.Row="2" Margin="230,13,97,21" KeyDown="txtNombre1_KeyDown" />
         <TextBlock Grid.Row="3" Text="Ubicación" Margin="100,10,329,0" FontSize="20" RenderTransformOrigin="0.581,0.206" Height="38" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="3" Name="txtUbicacion" Margin="230,13,97,0" Height="24" VerticalAlignment="Top" />
+        <TextBox Grid.Row="3" Name="txtUbicacion" Margin="230,13,97,0" Height="24" VerticalAlignment="Top" KeyDown="txtUbicacion_KeyDown" />
         <TextBlock Text="Descripción" Grid.Row="4" Margin="100,10,314,110" FontSize="20"></TextBlock>
-        <RichTextBox Grid.Row="4" Margin="100,45,97,10"/>
+        <RichTextBox x:Name="rchDespripcion" Grid.Row="4" Margin="100,45,97,10" KeyDown="rchDespripcion_KeyDown"/>
         <TextBlock Grid.Row="5" Text="Número de corredores" Margin="100,16,216,0" FontSize="20" RenderTransformOrigin="0.581,0.206" Height="33" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="5" Name="txtNumCorredores" Margin="311,19,97,0" Height="22" VerticalAlignment="Top" />
+        <TextBox Grid.Row="5" Name="txtNumCorredores" Margin="311,19,97,0" Height="22" VerticalAlignment="Top" KeyDown="txtNumCorredores_KeyDown" />
         <mah:MetroProgressBar x:Name="estado" HorizontalAlignment="Left" Height="26" Margin="98,19,0,0" Grid.Row="6" VerticalAlignment="Top" Width="325"/>
         <Button Content="Regresar" x:Name="btnRegresar" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="145" Height="45" FontSize="13" Click="btnRegresar_Click"/>
         <Button Content="Ingresar" x:Name="btnIngresar" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="145" Height="45" FontSize="13"/>

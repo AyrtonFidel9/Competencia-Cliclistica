@@ -26,7 +26,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
     {
         MainWindow objVen = new MainWindow();
         public string Nombre { get; set; }
-        clase1[] comp = new clase1[10];
+        clCiclistas[] comp = new clCiclistas[10];
         //clase1[] competidores = new clase1[10];
         int contador = 0;
         public Ciclistas( )
@@ -67,7 +67,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            clase1 objc = new clase1();
+            clCiclistas objc = new clCiclistas();
             objc.Nombre = txtNombre.Text;
             objc.Apellido = txtApellido.Text;
             objc.ID = txtID.Text;
@@ -97,7 +97,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
             //var metroWindow = (Application.Current.MainWindow as MetroWindow);
             ////objC.btnRegresar.Click += new RoutedEventHandler(btnRegresar_Click); 
             //await metroWindow.ShowMetroDialogAsync(objC);
-            clase1 objc = new clase1();
+            clCiclistas objc = new clCiclistas();
             //MessageBox.Show(nom + ap + id + equipo + dorsal + pais);
             
 
@@ -123,7 +123,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
         {
             objVen.Competidores = comp;
             dgCiclistas.Items.Clear();
-            foreach (clase1 indice in objVen.Competidores)
+            foreach (clCiclistas indice in objVen.Competidores)
             {
                 if (indice != null)
                 {

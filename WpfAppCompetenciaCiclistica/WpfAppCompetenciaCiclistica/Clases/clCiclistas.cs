@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace WpfAppCompetenciaCiclistica.Clases
 {
-    class clase1: INotifyPropertyChanged
+    class clCiclistas: INotifyPropertyChanged
     {
         //datos de los ciclistas
 
@@ -22,7 +22,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
         private float tiempo;
 
         //constructor vacio
-        public clase1()
+        public clCiclistas()
         {
             nombre = string.Empty;
             apellido = string.Empty;
@@ -33,7 +33,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
         }
 
         //constructor
-        public clase1(string Nom, string Ape, string id, string Equi, string Dor, string Pa)
+        public clCiclistas(string Nom, string Ape, string id, string Equi, string Dor, string Pa)
         {
             this.nombre = Nom;
             this.apellido = Ape;

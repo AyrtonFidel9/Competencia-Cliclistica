@@ -296,7 +296,7 @@
 
 
         <!--ESPACIO ETAPAS-->
-        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Hidden">
+        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -337,10 +337,20 @@
 
                 <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19" Background="White">
                     <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"></TextBlock>
+                    <Image  Margin="0" Name="image1"  Stretch="Uniform" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\Logo.png" />
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="1" Background="White" Margin="0,10,28,19" >
                     <ScrollViewer HorizontalContentAlignment="Center">
                         <StackPanel x:Name="stack" Width="348" HorizontalAlignment="Right" Height="693">
+                     
+                            <!--<DataGrid x:Name="grdEtapas">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Numero" Width="75" Binding="{Binding numero,Mode=TwoWay  }"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="km" Width="60" Binding="{Binding kilometros,Mode=TwoWay}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Ubicación" Width="100" Binding="{Binding Lugar,Mode=TwoWay}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Información" Width="115" Binding="{Binding descripcion,Mode=TwoWay}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>-->
 
                         </StackPanel>
 
@@ -355,38 +365,42 @@
             </Grid>
             <mah:FlyoutsControl  HorizontalAlignment="Right" Grid.RowSpan="2">
                 <mah:Flyout  x:Name="flyIngresoEtapa" Position="Right" Width="400">
-                    <StackPanel>
-                        <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
-                            <TextBlock Text="Kilómetros"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                            <TextBox Name="txtKilometrosEtapa" Width="170" Height="30"   FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
-                        </WrapPanel>
-                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <TextBlock Text="Ubicación"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                            <TextBox  Name="txtUbicacionEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
-                        </WrapPanel>
+                    <Grid>
+                        
+                        <StackPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
+                                <TextBlock Text="Kilómetros"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                                <TextBox Name="txtKilometrosEtapa" Width="170" Height="30"   FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtKilometrosEtapa_KeyDown"/>
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                                <TextBlock Text="Ubicación"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                                <TextBox  Name="txtUbicacionEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtUbicacionEtapa_KeyDown"/>
+                            </WrapPanel>
 
 
-                        <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <TextBlock Text="N° Etapa"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                            <TextBox  Name="txtNumEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17"/>
-                        </WrapPanel>
+                            <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
+                                <TextBlock Text="N° Etapa"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                                <TextBox  Name="txtNumEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtNumEtapa_KeyDown"/>
+                            </WrapPanel>
 
 
-                        <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
-                            <TextBlock Text="Descripción"   FontSize="20" Margin="0,3,0,0" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
+                                <TextBlock Text="Descripción"   FontSize="20" Margin="0,3,0,0" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" KeyDown="rchDescripcionEtapa_KeyDown"/>
+                            </WrapPanel>
 
-                        <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
-                            <RichTextBox x:Name="rchDescripcionEtapa"  Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
-                        </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
+                                <RichTextBox x:Name="rchDescripcionEtapa"  Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown="rchDescripcionEtapa_KeyDown"/>
+                            </WrapPanel>
 
-                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <mah:MetroProgressBar x:Name="estadoEtapa" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
-                        </WrapPanel>
-                        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <Button Content="Ingresar" x:Name="btnIngresarEtapa" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        </WrapPanel>
-                    </StackPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                                <mah:MetroProgressBar x:Name="estadoEtapa" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                                <Button Content="Ingresar" x:Name="btnIngresarEtapa" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" Click="btnIngresarEtapa_Click"/>
+                            </WrapPanel>
+                        </StackPanel>
+
+                    </Grid>
                 </mah:Flyout>
             </mah:FlyoutsControl>
         </Grid>
@@ -442,7 +456,7 @@
 
         <!--ESPACIO CICLISTAS-->
 
-        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Visible">
+        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Hidden">
             <DataGrid x:Name="dgCiclistas"  HorizontalAlignment="Left" Height="374" Margin="40,166,0,0" 
                       VerticalAlignment="Top" Width="819"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17" >
                 <DataGrid.Columns>

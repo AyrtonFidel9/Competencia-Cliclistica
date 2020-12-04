@@ -28,5 +28,37 @@ namespace WpfAppCompetenciaCiclistica.Controles
         {
             this.Close();
         }
+
+        private void txtNombre1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtUbicacion.Focus();
+            }
+        }
+
+        private void txtUbicacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                rchDespripcion.Focus();
+            }
+        }
+
+        private void rchDespripcion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtNumCorredores.Focus();
+            }
+        }
+
+        private void txtNumCorredores_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnIngresar.Focus();
+            }
+        }
     }
 }

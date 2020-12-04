@@ -30,5 +30,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
         {
             this.flyIngresoCiclistas.IsOpen = true;
         }
+
+
     }
 }

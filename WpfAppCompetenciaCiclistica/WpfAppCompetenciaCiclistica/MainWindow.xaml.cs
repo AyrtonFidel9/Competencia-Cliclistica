@@ -29,7 +29,8 @@ namespace WpfAppCompetenciaCiclistica
         
     public partial class MainWindow : MetroWindow
     {
-        clase1[] competidores = new clase1[10];
+        clCiclistas[] competidores = new clCiclistas[10];
+        Etapas[] lisEtapas = new Etapas[4];
         public MainWindow()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -43,7 +44,8 @@ namespace WpfAppCompetenciaCiclistica
             Reloj.Text = DateTime.Now.ToLongTimeString();
         }
 
-        internal clase1[] Competidores { get => competidores; set => competidores = value; }
+        internal clCiclistas[] Competidores { get => competidores; set => competidores = value; }
+        internal Etapas[] LisEtapas { get => lisEtapas; set => lisEtapas = value; }
 
         //evento para navegar/llamar a los controles o paginas
         private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs args)
@@ -108,13 +110,19 @@ namespace WpfAppCompetenciaCiclistica
         private void menu_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs args)
         {
         }
+
+        #region Etapas
+
+        #endregion
         //-----------------------------------------CODIGO DE LAS ETAPAS----------------------------------------------
+
+
 
         bool eliminar = false;
 
-
         private void crearTilesEtapas(string nombre)
         {
+
             Tile panel = new Tile();
             panel.Content = nombre;
             panel.Width = 290;
@@ -125,7 +133,6 @@ namespace WpfAppCompetenciaCiclistica
             panel.VerticalAlignment = VerticalAlignment.Center;
 
             panel.Click += panel_Click; //se añade el evento
-
 
             stack.Children.Add(panel);
 
@@ -214,7 +221,7 @@ namespace WpfAppCompetenciaCiclistica
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            clase1 objc = new clase1();
+            clCiclistas objc = new clCiclistas();
             objc.Nombre = txtNombreCiclista.Text;
             objc.Apellido = txtApellidoCiclista.Text;
             objc.ID = txtIDCiclista.Text;
@@ -248,7 +255,7 @@ namespace WpfAppCompetenciaCiclistica
         private void btnAcutaliza_Click(object sender, RoutedEventArgs e)
         {
             dgCiclistas.Items.Clear();
-            foreach (clase1 indice in Competidores)
+            foreach (clCiclistas indice in Competidores)
             {
                 if (indice != null)
                 {
@@ -267,6 +274,66 @@ namespace WpfAppCompetenciaCiclistica
         {
             this.flyIngresar.IsOpen = true;
             
+        }
+
+        private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+            {//(e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = true;
+            }
+            if (e.Key == Key.Enter)
+            {
+                txtUbicacionEtapa.Focus();
+            }
+        }
+
+
+        private void rchDescripcionEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnAgregarEtapa.Focus();
+            }
+        }
+
+        private void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
+        {
+            Etapa objetapa = new Etapa();
+            objetapa.kilometros = int.Parse(txtKilometrosEtapa.Text);
+            objetapa.numero = int.Parse(txtNumEtapa.Text);
+            TextRange range = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
+            objetapa.descripcion = range.Text;
+            objetapa.Lugar = txtUbicacionEtapa.Text;
+
+            //grdEtapas.Items.Add(objetapa);
+
+            crearTilesEtapas("Etapa "+objetapa.numero);
+
+        }
+        #region Clase Etapa
+        public class Etapa
+        {
+            public int kilometros { get; set; }
+            public int numero { get; set; }
+            public string Lugar { get; set; }
+            public string descripcion { get; set; }
+        }
+        #endregion
+        private void txtUbicacionEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtNumEtapa.Focus();
+            }
+        }
+
+        private void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                rchDescripcionEtapa.Focus();
+            }
         }
     }
 

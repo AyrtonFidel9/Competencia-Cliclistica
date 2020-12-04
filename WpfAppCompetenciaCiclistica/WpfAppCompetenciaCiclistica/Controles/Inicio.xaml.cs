@@ -34,7 +34,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
         {
          
 
-                foreach (clase1 indice in objVen.Competidores)
+                foreach (clCiclistas indice in objVen.Competidores)
                 {
                     MessageBox.Show(indice.Apellido);
                 }

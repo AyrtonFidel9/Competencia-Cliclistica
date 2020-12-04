@@ -69,7 +69,6 @@ namespace WpfAppCompetenciaCiclistica.Controles
 
         private void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            //IngresarEtapas.AcceptButton = btnIngresarEtapa;
         }
 
         private void txtKilometrosEtapa_PreviewKeyDown(object sender, KeyEventArgs e)
