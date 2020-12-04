@@ -137,7 +137,7 @@ namespace WpfAppCompetenciaCiclistica
 
         private void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("activado");
+            MessageBox.Show("Pulse la etapa que desea eliminar", "Aviso",MessageBoxButton.OK, MessageBoxImage.Information);
             eliminar = true;
         }
         private void panel_Click(object sender, RoutedEventArgs e)
@@ -310,6 +310,13 @@ namespace WpfAppCompetenciaCiclistica
 
             crearTilesEtapas("Etapa "+objetapa.numero);
 
+            txtKilometrosEtapa.Clear();
+            txtNumEtapa.Clear();
+            rchDescripcionEtapa.Document.Blocks.Clear();
+            txtUbicacionEtapa.Clear();
+
+            this.flyIngresoEtapa.IsOpen = false;
+
         }
         #region Clase Etapa
         public class Etapa
@@ -338,3 +345,7 @@ namespace WpfAppCompetenciaCiclistica
     }
 
 }
+
+/*
+ List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList(); 
+ */

@@ -377,7 +377,6 @@
                                 <TextBox  Name="txtUbicacionEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtUbicacionEtapa_KeyDown"/>
                             </WrapPanel>
 
-
                             <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
                                 <TextBlock Text="N° Etapa"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
                                 <TextBox  Name="txtNumEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtNumEtapa_KeyDown"/>
