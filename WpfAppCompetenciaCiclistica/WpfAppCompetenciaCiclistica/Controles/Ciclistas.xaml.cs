@@ -26,7 +26,7 @@ namespace WpfAppCompetenciaCiclistica.Controles
     {
         MainWindow objVen = new MainWindow();
         public string Nombre { get; set; }
-        clCiclistas[] comp = new clCiclistas[10];
+        List<clCiclistas> comp = new List<clCiclistas>();
         //clase1[] competidores = new clase1[10];
         int contador = 0;
         public Ciclistas( )
@@ -75,8 +75,8 @@ namespace WpfAppCompetenciaCiclistica.Controles
             objc.Dorsal = txtDorsal.Text;
             objc.Pais = comboBoxPais.Text;
 
-            
-            comp[contador] = objc;
+            comp.Add(objc);
+
             dgCiclistas.Items.Add(objc);
             //MessageBox.Show(Nombre);
             //competidores[contador] = objc;
@@ -121,9 +121,9 @@ namespace WpfAppCompetenciaCiclistica.Controles
 
         private void btnAcutaliza_Click(object sender, RoutedEventArgs e)
         {
-            objVen.Competidores = comp;
+            objVen.listCiclistas = comp;
             dgCiclistas.Items.Clear();
-            foreach (clCiclistas indice in objVen.Competidores)
+            foreach (clCiclistas indice in objVen.listCiclistas)
             {
                 if (indice != null)
                 {

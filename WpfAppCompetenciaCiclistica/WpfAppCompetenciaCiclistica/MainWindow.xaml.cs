@@ -29,8 +29,8 @@ namespace WpfAppCompetenciaCiclistica
         
     public partial class MainWindow : MetroWindow
     {
-        clCiclistas[] competidores = new clCiclistas[10];
-        Etapas[] lisEtapas = new Etapas[4];
+        internal List<clCiclistas> listCiclistas = new List<clCiclistas>();
+        internal List<Etapa> listEtapas = new List<Etapa>();
         public MainWindow()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -43,9 +43,6 @@ namespace WpfAppCompetenciaCiclistica
         {
             Reloj.Text = DateTime.Now.ToLongTimeString();
         }
-
-        internal clCiclistas[] Competidores { get => competidores; set => competidores = value; }
-        internal Etapas[] LisEtapas { get => lisEtapas; set => lisEtapas = value; }
 
         //evento para navegar/llamar a los controles o paginas
         private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs args)
@@ -229,8 +226,10 @@ namespace WpfAppCompetenciaCiclistica
             objc.Dorsal = txtDorsalCiclista.Text;
             objc.Pais = comboBoxPaisCiclista.Text;
 
+            //Uso de listas
 
-            Competidores[contador] = objc;
+            listCiclistas.Add(objc);
+
             dgCiclistas.Items.Add(objc);
             //MessageBox.Show(Nombre);
             //competidores[contador] = objc;
@@ -255,7 +254,7 @@ namespace WpfAppCompetenciaCiclistica
         private void btnAcutaliza_Click(object sender, RoutedEventArgs e)
         {
             dgCiclistas.Items.Clear();
-            foreach (clCiclistas indice in Competidores)
+            foreach (clCiclistas indice in listCiclistas)
             {
                 if (indice != null)
                 {
@@ -306,7 +305,8 @@ namespace WpfAppCompetenciaCiclistica
             objetapa.descripcion = range.Text;
             objetapa.Lugar = txtUbicacionEtapa.Text;
 
-            //grdEtapas.Items.Add(objetapa);
+            //Uso de listas 
+            listEtapas.Add(objetapa);
 
             crearTilesEtapas("Etapa "+objetapa.numero);
 
