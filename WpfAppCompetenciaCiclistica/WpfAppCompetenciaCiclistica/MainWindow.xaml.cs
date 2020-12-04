@@ -108,32 +108,6 @@ namespace WpfAppCompetenciaCiclistica
         private void menu_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs args)
         {
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //-----------------------------------------CODIGO DE LAS ETAPAS----------------------------------------------
 
         bool eliminar = false;

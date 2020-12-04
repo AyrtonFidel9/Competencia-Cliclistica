@@ -28,5 +28,53 @@ namespace WpfAppCompetenciaCiclistica.Controles
         {
             this.Close();
         }
+
+        private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                e.Handled = true;
+            }
+            //e.Key >= Key.A && e.Key <= Key.Z   esto para letras
+            if (e.Key == Key.Enter)
+            {
+                txtUbicacionEtapa.Focus();
+            }
+        }
+
+        private void txtUbicacionEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtUbicacionEtapa.Focus();
+            }
+        }
+
+        private void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                rchDescripciónEtapa.Focus();
+            }
+        }
+
+        private void rchDescripciónEtapa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnIngresarEtapa.Focus();
+            }
+
+        }
+
+        private void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
+        {
+            //IngresarEtapas.AcceptButton = btnIngresarEtapa;
+        }
+
+        private void txtKilometrosEtapa_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
     }
 }

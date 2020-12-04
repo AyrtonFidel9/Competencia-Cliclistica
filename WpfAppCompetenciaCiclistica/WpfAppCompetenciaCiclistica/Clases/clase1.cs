@@ -19,6 +19,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
         private string equipo;
         private string dorsal;
         private string pais;
+        private float tiempo;
 
         //constructor vacio
         public clase1()
