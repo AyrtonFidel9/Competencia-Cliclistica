@@ -32,6 +32,7 @@ namespace WpfAppCompetenciaCiclistica
     {
         internal List<clCiclistas> listCiclistas = new List<clCiclistas>();
         internal List<Etapa> listEtapas = new List<Etapa>();
+        Tile PanelModificar = new Tile(); 
         public MainWindow()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -246,6 +247,7 @@ namespace WpfAppCompetenciaCiclistica
 
             if (modificar)
             {
+                this.PanelModificar = (e.Source as Tile);
                 //EnumVisual(stack);
                 Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num);
 
@@ -254,10 +256,11 @@ namespace WpfAppCompetenciaCiclistica
                 TextRange textRange = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
                 textRange.Text = numetapa.descripcion;
                 txtUbicacionEtapa.Text = numetapa.Lugar;
-
+                //(e.Source as Tile).Content = "Etapa " + txtNumEtapa.Text;
+                //modificar = false;
                 this.flyIngresoEtapa.IsOpen = true;
 
-                modificar = false;
+                
             }
         }
 
@@ -308,8 +311,16 @@ namespace WpfAppCompetenciaCiclistica
 
             //Uso de listas 
             listEtapas.Add(objetapa);
-
-            crearTilesEtapas("Etapa " + objetapa.numero);
+            if (modificar)
+            {
+                PanelModificar.Content = "Etapa "+txtNumEtapa.Text;
+                modificar = false;
+            }
+            else
+            {
+                crearTilesEtapas("Etapa " + objetapa.numero);
+            }
+            
 
             txtKilometrosEtapa.Clear();
             txtNumEtapa.Clear();
