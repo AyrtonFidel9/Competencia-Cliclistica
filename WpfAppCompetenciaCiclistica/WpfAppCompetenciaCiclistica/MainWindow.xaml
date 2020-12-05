@@ -319,7 +319,7 @@
                             <iconPacks:BootstrapIcons Kind="TrashFill" Height="50" Width="25"></iconPacks:BootstrapIcons>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="btnModificarEtapa" Margin="0,22,20,0" Height="70" Width="70">
+                    <Button x:Name="btnModificarEtapa" Margin="0,22,20,0" Height="70" Width="70" Click="btnModificarEtapa_Click">
                         <Button.Content>
                             <iconPacks:BootstrapIcons Kind="PencilSquare" Width="30" Height="40" ></iconPacks:BootstrapIcons>
                         </Button.Content>

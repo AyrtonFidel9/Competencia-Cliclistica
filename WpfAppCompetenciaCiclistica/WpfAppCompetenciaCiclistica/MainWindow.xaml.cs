@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using WpfAppCompetenciaCiclistica.Controles;
 using WpfAppCompetenciaCiclistica.Clases;
+using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Threading;
 
 
@@ -24,9 +25,9 @@ namespace WpfAppCompetenciaCiclistica
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     /// 
-    
 
-        
+
+
     public partial class MainWindow : MetroWindow
     {
         internal List<clCiclistas> listCiclistas = new List<clCiclistas>();
@@ -37,21 +38,21 @@ namespace WpfAppCompetenciaCiclistica
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-
         }
         void timer_Tick(object sender, EventArgs e)
         {
             Reloj.Text = DateTime.Now.ToLongTimeString();
         }
 
+        #region Codigo para las ventanas
         //evento para navegar/llamar a los controles o paginas
         private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs args)
         {
             //se captura el tipo de imagen del induice
             HamburgerMenuGlyphItem indice = args.ClickedItem as HamburgerMenuGlyphItem;
-            if(indice != null)
+            if (indice != null)
             {
-                switch(indice.Tag.ToString())
+                switch (indice.Tag.ToString())
                 {
                     case "Inicio":
                         //Inicio objI = new Inicio();
@@ -91,7 +92,7 @@ namespace WpfAppCompetenciaCiclistica
                         break;
 
                 }
-                   
+
             }
 
 
@@ -107,11 +108,11 @@ namespace WpfAppCompetenciaCiclistica
         private void menu_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs args)
         {
         }
-
-        #region Etapas
-
         #endregion
-        
+        #region Codigo de los Ciclistas
+
+
+
         //------------------------------CODIGO DE LOS CICLISTAS----------------------------------//
         int contador = 0;
         private void txtNombre_KeyDown(object sender, KeyEventArgs e)
@@ -170,7 +171,7 @@ namespace WpfAppCompetenciaCiclistica
         }
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-           
+
 
 
 
@@ -188,7 +189,7 @@ namespace WpfAppCompetenciaCiclistica
 
             }
         }
-
+        #endregion
 
         #region Codigo de las Etapas
         //-----------------------------------------CODIGO DE LAS ETAPAS----------------------------------------------
@@ -196,7 +197,7 @@ namespace WpfAppCompetenciaCiclistica
 
 
         bool eliminar = false;
-
+        bool modificar = false;
         private void crearTilesEtapas(string nombre)
         {
 
@@ -220,15 +221,43 @@ namespace WpfAppCompetenciaCiclistica
             MessageBox.Show("Pulse la etapa que desea eliminar", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
             eliminar = true;
         }
+        private async void btnModificarEtapa_Click(object sender, RoutedEventArgs e)
+        {
+            await this.ShowMessageAsync("listo", "Pulse la etapa que desea modificar");
+            //MessageBox.Show(, "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+            modificar = true;
+
+        }
         private void panel_Click(object sender, RoutedEventArgs e)
         {
+            // Recopero el nombre del panel
+            char[] titulo = e.Source.ToString().ToCharArray();
+            // Separo el numero de etapa
+            int num = int.Parse(titulo[titulo.Length - 1].ToString());
 
-            if (eliminar == true)
+            if (eliminar)
             {
-                stack.Children.Remove((e.Source as Tile));
-                listEtapas.Remove();
+                stack.Children.Remove(e.Source as Tile);
+                var itemToRemove = listEtapas.Single(r => r.numero == num);
+                listEtapas.Remove(itemToRemove);
                 eliminar = false;
 
+            }
+
+            if (modificar)
+            {
+                //EnumVisual(stack);
+                Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num);
+
+                txtKilometrosEtapa.Text = numetapa.kilometros.ToString();
+                txtNumEtapa.Text = numetapa.numero.ToString();
+                TextRange textRange = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
+                textRange.Text = numetapa.descripcion;
+                txtUbicacionEtapa.Text = numetapa.Lugar;
+
+                this.flyIngresoEtapa.IsOpen = true;
+
+                modificar = false;
             }
         }
 
@@ -244,7 +273,7 @@ namespace WpfAppCompetenciaCiclistica
         private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
         {
             this.flyIngresar.IsOpen = true;
-            
+
         }
 
         private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
@@ -280,7 +309,7 @@ namespace WpfAppCompetenciaCiclistica
             //Uso de listas 
             listEtapas.Add(objetapa);
 
-            crearTilesEtapas("Etapa "+objetapa.numero);
+            crearTilesEtapas("Etapa " + objetapa.numero);
 
             txtKilometrosEtapa.Clear();
             txtNumEtapa.Clear();
@@ -315,8 +344,47 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
         #endregion
-    }
 
+        public void EnumVisual(Visual myVisual)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(myVisual); i++)
+            {
+                // Retrieve child visual at specified index value.
+                Visual childVisual = (Visual)VisualTreeHelper.GetChild(myVisual, i);
+                //// Do processing of the child visual object.
+                try
+                {
+                    MessageBox.Show((childVisual as FrameworkElement).ToString());
+                }catch
+                {
+
+                }
+                EnumVisual(childVisual);
+            }
+        }
+
+
+
+        /*
+        
+        
+            {​​​​
+            
+                {​​​​
+                if ((childVisual as FrameworkElement).ToString() == "System.Windows.Controls.Image")
+                    {
+
+                    }
+                }​​​​catch
+                {
+                    //zzz
+
+                    // Enumerate children of the child visual object.
+                }​​​​
+                }
+        }*/
+    }
+    
 }
 
 /* para ordenar se crea otra lista y se guarda en ella de forma ordenada
