@@ -111,77 +111,7 @@ namespace WpfAppCompetenciaCiclistica
         #region Etapas
 
         #endregion
-        //-----------------------------------------CODIGO DE LAS ETAPAS----------------------------------------------
-
-
-
-        bool eliminar = false;
-
-        private void crearTilesEtapas(string nombre)
-        {
-
-            Tile panel = new Tile();
-            panel.Content = nombre;
-            panel.Width = 290;
-            panel.Height = 100;
-            // panel.Tag = _tag;
-            panel.Margin = new Thickness(5, 20, 5, 5);
-            panel.HorizontalAlignment = HorizontalAlignment.Center;
-            panel.VerticalAlignment = VerticalAlignment.Center;
-
-            panel.Click += panel_Click; //se añade el evento
-
-            stack.Children.Add(panel);
-
-        }
-
-        private void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Pulse la etapa que desea eliminar", "Aviso",MessageBoxButton.OK, MessageBoxImage.Information);
-            eliminar = true;
-        }
-        private void panel_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (eliminar == true)
-            {
-                stack.Children.Remove((e.Source as Tile));
-
-                eliminar = false;
-
-            }
-        }
-
-        private void btnAgregarEtapa_Click(object sender, RoutedEventArgs e)
-        {
-            this.flyIngresoEtapa.IsOpen = true;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         //------------------------------CODIGO DE LOS CICLISTAS----------------------------------//
         int contador = 0;
         private void txtNombre_KeyDown(object sender, KeyEventArgs e)
@@ -231,11 +161,6 @@ namespace WpfAppCompetenciaCiclistica
             listCiclistas.Add(objc);
 
             dgCiclistas.Items.Add(objc);
-            //MessageBox.Show(Nombre);
-            //competidores[contador] = objc;
-
-            contador++;
-            //objCicli.dgCiclistas.Items.Add(objc);
 
         }
 
@@ -264,6 +189,53 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
+
+        #region Codigo de las Etapas
+        //-----------------------------------------CODIGO DE LAS ETAPAS----------------------------------------------
+
+
+
+        bool eliminar = false;
+
+        private void crearTilesEtapas(string nombre)
+        {
+
+            Tile panel = new Tile();
+            panel.Content = nombre;
+            panel.Width = 290;
+            panel.Height = 100;
+            // panel.Tag = _tag;
+            panel.Margin = new Thickness(5, 20, 5, 5);
+            panel.HorizontalAlignment = HorizontalAlignment.Center;
+            panel.VerticalAlignment = VerticalAlignment.Center;
+
+            panel.Click += panel_Click; //se añade el evento
+
+            stack.Children.Add(panel);
+
+        }
+
+        private void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Pulse la etapa que desea eliminar", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+            eliminar = true;
+        }
+        private void panel_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (eliminar == true)
+            {
+                stack.Children.Remove((e.Source as Tile));
+                listEtapas.Remove();
+                eliminar = false;
+
+            }
+        }
+
+        private void btnAgregarEtapa_Click(object sender, RoutedEventArgs e)
+        {
+            this.flyIngresoEtapa.IsOpen = true;
+        }
         private void btnAgregarCompetencia_Click(object sender, RoutedEventArgs e)
         {
             this.flyIngresoCiclistas.IsOpen = true;
@@ -342,10 +314,25 @@ namespace WpfAppCompetenciaCiclistica
                 rchDescripcionEtapa.Focus();
             }
         }
+        #endregion
     }
 
 }
 
-/*
+/* para ordenar se crea otra lista y se guarda en ella de forma ordenada
  List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList(); 
+ */
+
+
+/* para hacer las busquedas
+ List<string> provincies = GetProvincias();
+ 
+string patternSearch = "na";
+ 
+string resultFind = provinces.Find(
+     delegate(string current)
+     {
+          return current.Contains(patternSearch);
+     }
+);
  */

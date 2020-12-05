@@ -337,7 +337,8 @@
 
                 <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19" Background="White">
                     <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"></TextBlock>
-                    <Image  Margin="0" Name="image1"  Stretch="Uniform" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\Logo.png" />
+                    
+                    <!--<Image  Margin="0" Name="image1"  Stretch="Uniform" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\Logo.png" />-->
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="1" Background="White" Margin="0,10,28,19" >
                     <ScrollViewer HorizontalContentAlignment="Center">
@@ -351,7 +352,7 @@
                                     <DataGridTextColumn Header="Información" Width="115" Binding="{Binding descripcion,Mode=TwoWay}"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>-->
-
+                            
                         </StackPanel>
 
                     </ScrollViewer>
