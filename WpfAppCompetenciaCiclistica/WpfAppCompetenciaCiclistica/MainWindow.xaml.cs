@@ -30,9 +30,15 @@ namespace WpfAppCompetenciaCiclistica
 
     public partial class MainWindow : MetroWindow
     {
+        #region Listas y variables del programa
         internal List<clCiclistas> listCiclistas = new List<clCiclistas>();
         internal List<Etapa> listEtapas = new List<Etapa>();
-        Tile PanelModificar = new Tile(); 
+        //List<ClCompetencia> listaCompetencia = new List<ClCompetencia>();
+        Tile PanelModificar = new Tile();
+        string NombreCompetencia;
+        #endregion
+
+        #region Funcion Principal
         public MainWindow()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -44,6 +50,7 @@ namespace WpfAppCompetenciaCiclistica
         {
             Reloj.Text = DateTime.Now.ToLongTimeString();
         }
+        #endregion
 
         #region Codigo para las ventanas
         //evento para navegar/llamar a los controles o paginas
@@ -109,13 +116,67 @@ namespace WpfAppCompetenciaCiclistica
         private void menu_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs args)
         {
         }
+
+
+
         #endregion
+
+        #region Codigo para la competencia
+        string ubicomp, descripcion;
+        int numCicli, posicion;
+
+        private void txtNombreCompetencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtUbicacionCompetencia.Focus();
+            }
+        }
+
+        private void txtUbicacionCompetencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                rchDescripcionCompetencia.Focus();
+            }
+        }
+
+        /*
+        private void txtUbicacionCompetencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtNumCorredoresCompetencia.Focus();
+            }
+        }
+        
+        private async void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+            NombreCompetencia = txtNombreCompetencia.Text;
+            ubicomp = txtUbicacionCompetencia.Text;
+            TextRange textRange = new TextRange(rchDescripcionCompetencia.Document.ContentStart, rchDescripcionCompetencia.Document.ContentEnd);
+            descripcion = textRange.Text;
+            numCicli = int.Parse(txtNumCorredoresCompetencia.Text);
+            
+            ClCompetencia ciclista1 = new ClCompetencia(nomcomp, NombreCompetencia, descripcion, numCicli);
+            listaCompetencia.Add(ciclista1);
+            txtBTituloComp.Text = NombreCompetencia;
+
+            await this.ShowMessageAsync("¡Listo!","Datos ingresados correctamente");
+            
+        }*/
+
+
+        #endregion
+
+
+
         #region Codigo de los Ciclistas
 
 
 
         //------------------------------CODIGO DE LOS CICLISTAS----------------------------------//
-        int contador = 0;
+       int contador = 0;
         private void txtNombre_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -224,7 +285,7 @@ namespace WpfAppCompetenciaCiclistica
         }
         private async void btnModificarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("listo", "Pulse la etapa que desea modificar");
+            await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea modificar");
             //MessageBox.Show(, "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
             modificar = true;
 
@@ -235,6 +296,28 @@ namespace WpfAppCompetenciaCiclistica
             char[] titulo = e.Source.ToString().ToCharArray();
             // Separo el numero de etapa
             int num = int.Parse(titulo[titulo.Length - 1].ToString());
+
+            Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num);
+
+            lblKilometros.Content = numetapa.kilometros.ToString();
+            lblNumero.Content = numetapa.numero.ToString();
+            TextRange textRange = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
+            lblDescipcion.Content = numetapa.descripcion;
+            lblUbicacion.Content = numetapa.Lugar;
+
+            imagen1.Visibility = Visibility.Hidden;
+
+            lbl1.Visibility = Visibility.Visible;
+            lbl2.Visibility = Visibility.Visible;
+            lbl3.Visibility = Visibility.Visible;
+            lbl4.Visibility = Visibility.Visible;
+
+            lblKilometros.Visibility = Visibility.Visible;
+            lblNumero.Visibility = Visibility.Visible;
+            lblDescipcion.Visibility = Visibility.Visible;
+            lblUbicacion.Visibility = Visibility.Visible;
+
+            pbImagen1.Visibility = Visibility.Visible;
 
             if (eliminar)
             {
@@ -249,11 +332,8 @@ namespace WpfAppCompetenciaCiclistica
             {
                 this.PanelModificar = (e.Source as Tile);
                 //EnumVisual(stack);
-                Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num);
-
                 txtKilometrosEtapa.Text = numetapa.kilometros.ToString();
                 txtNumEtapa.Text = numetapa.numero.ToString();
-                TextRange textRange = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
                 textRange.Text = numetapa.descripcion;
                 txtUbicacionEtapa.Text = numetapa.Lugar;
                 //(e.Source as Tile).Content = "Etapa " + txtNumEtapa.Text;
@@ -300,7 +380,7 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        private void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
+        private async void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
         {
             Etapa objetapa = new Etapa();
             objetapa.kilometros = int.Parse(txtKilometrosEtapa.Text);
@@ -310,16 +390,34 @@ namespace WpfAppCompetenciaCiclistica
             objetapa.Lugar = txtUbicacionEtapa.Text;
 
             //Uso de listas 
-            listEtapas.Add(objetapa);
+
+            Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == int.Parse(txtNumEtapa.Text));
+
             if (modificar)
             {
-                PanelModificar.Content = "Etapa "+txtNumEtapa.Text;
-                modificar = false;
+                if (numetapa == null)
+                {
+                    PanelModificar.Content = "Etapa " + txtNumEtapa.Text;
+                    listEtapas.Add(objetapa);
+                    modificar = false;
+                }else
+                {
+                    await this.ShowMessageAsync("Aviso", "Numero de etapa ya existe");
+                }
             }
             else
             {
-                crearTilesEtapas("Etapa " + objetapa.numero);
+                
+                //MessageBox.Show(numetapa.numero.ToString());
+                if (numetapa == null)
+                {
+                    listEtapas.Add(objetapa);
+                    crearTilesEtapas("Etapa " + objetapa.numero);
+                }
+                else
+                    await this.ShowMessageAsync("Aviso", "Numero de etapa ya existe");
             }
+
             
 
             txtKilometrosEtapa.Clear();
@@ -374,26 +472,6 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-
-
-        /*
-        
-        
-            {​​​​
-            
-                {​​​​
-                if ((childVisual as FrameworkElement).ToString() == "System.Windows.Controls.Image")
-                    {
-
-                    }
-                }​​​​catch
-                {
-                    //zzz
-
-                    // Enumerate children of the child visual object.
-                }​​​​
-                }
-        }*/
     }
     
 }

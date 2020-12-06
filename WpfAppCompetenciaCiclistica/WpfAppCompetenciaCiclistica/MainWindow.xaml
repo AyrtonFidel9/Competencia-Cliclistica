@@ -204,20 +204,20 @@
             </GroupBox>
 
             <TextBlock HorizontalAlignment="Left" Margin="42,264,0,0" TextWrapping="Wrap" Text="Podio" FontSize="20" VerticalAlignment="Top" FontWeight="Bold" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black" Height="25"/>
-            <TextBlock Margin="93,29,64,0" TextWrapping="Wrap" Text="(Inserte el nombre de la competencia)" FontSize="40" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black" Height="53"/>
+            <TextBlock x:Name="txtBTituloComp" Margin="93,29,64,0" TextWrapping="Wrap" Text="(Inserte el nombre de la competencia)" FontSize="40" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Black" Height="53"/>
             <mah:FlyoutsControl  HorizontalAlignment="Right">
                 <mah:Flyout  x:Name="flyIngresoCiclistas" Position="Right" Width="400">
                     <StackPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
                             <TextBlock Width="110" Text="Nombre" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
-                            <TextBox  Name="txtNombreCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                            <TextBox  Name="txtNombreCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtNombreCompetencia_KeyDown"/>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Width="110" Text="Ubicación" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                            <TextBox  Name="txtUbicacionCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                            <TextBox  Name="txtUbicacionCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtUbicacionCompetencia_KeyDown"/>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
-                            <TextBlock Width="110" Text="Descripción" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <TextBlock Width="110" Text="Descripción" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
 
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
@@ -225,13 +225,13 @@
                         </WrapPanel>
                         <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Width="110" Text="N° Ciclistas" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
-                            <TextBox  Name="txtNumCorredoresCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                            <!--<TextBox  Name="txtNumCorredoresCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtNumCorredoresCompetencia_KeyDown"/>-->
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <mah:MetroProgressBar x:Name="estadoCompetencia" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300"/>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <Button Content="Ingresar" x:Name="btnIngresarCompetencia" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
+                            <!--<Button Content="Ingresar" x:Name="btnIngresarCompetencia" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="145" Height="45" FontSize="17" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" Click="btnIngresarCompetencia_Click"/>-->
                         </WrapPanel>
                     </StackPanel>
 
@@ -337,13 +337,22 @@
 
                 <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19" Background="White">
                     <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"></TextBlock>
-                    
-                    <!--<Image  Margin="0" Name="image1"  Stretch="Uniform" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\Logo.png" />-->
+                    <Label x:Name="lbl1" Content="Km" HorizontalAlignment="Left" Margin="58,50,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lbl2" Content="Ubicación" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lbl3" Content="Número de etapa" HorizontalAlignment="Left" Margin="58,110,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lbl4" Content="Descripcion" HorizontalAlignment="Left" Margin="58,140,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lblDescipcion" Content="-" HorizontalAlignment="Left" Margin="193,140,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lblKilometros" Content="-" HorizontalAlignment="Left" Margin="193,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.907,1.058" Visibility="Hidden"/>
+                    <Label x:Name="lblUbicacion" Content="-" HorizontalAlignment="Left" Margin="193,80,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Label x:Name="lblNumero" Content="-" HorizontalAlignment="Left" Margin="193,110,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Image Margin="0" Name="imagen1" Stretch="Fill" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\Logo.png" Visibility="Visible"></Image>
+                    <Image  Margin="10,200,5,2" Name="pbImagen1"  Stretch="Fill" Source="c:\users\edwin\source\repos\competencia-cliclistica\wpfappcompetenciaciclistica\wpfappcompetenciaciclistica\images\podio.png" Visibility="Hidden"/>
                 </Grid>
+
                 <Grid Grid.Row="0" Grid.Column="1" Background="White" Margin="0,10,28,19" >
                     <ScrollViewer HorizontalContentAlignment="Center">
                         <StackPanel x:Name="stack" Width="348" HorizontalAlignment="Right" Height="693">
-                     
+
                             <!--<DataGrid x:Name="grdEtapas">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Numero" Width="75" Binding="{Binding numero,Mode=TwoWay  }"></DataGridTextColumn>
@@ -352,7 +361,7 @@
                                     <DataGridTextColumn Header="Información" Width="115" Binding="{Binding descripcion,Mode=TwoWay}"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>-->
-                            
+
                         </StackPanel>
 
                     </ScrollViewer>
@@ -367,7 +376,7 @@
             <mah:FlyoutsControl  HorizontalAlignment="Right" Grid.RowSpan="2">
                 <mah:Flyout  x:Name="flyIngresoEtapa" Position="Right" Width="400">
                     <Grid>
-                        
+
                         <StackPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
                                 <TextBlock Text="Kilómetros"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>

@@ -202,6 +202,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Clases\clCiclistas.cs" />
+    <Compile Include="Clases\clCompetencia.cs" />
     <Compile Include="Clases\clEtapas.cs" />
     <Compile Include="Clases\clValidacion.cs" />
     <Compile Include="Controles\Ciclistas.xaml.cs">
@@ -308,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\carrera.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\podio.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
