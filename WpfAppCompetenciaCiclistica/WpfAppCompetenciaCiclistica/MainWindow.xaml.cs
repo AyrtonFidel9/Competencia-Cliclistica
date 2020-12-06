@@ -275,16 +275,11 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        clCiclistas objc = new clCiclistas();
+        
         private void btnIngresarCiclista_Click(object sender, RoutedEventArgs e)
         {
 
-            objc.Nombre = txtNombreCiclista.Text;
-            objc.Apellido = txtApellidoCiclista.Text;
-            objc.ID = txtIDCiclista.Text;
-            objc.Equipo = txtEquipoCiclista.Text;
-            objc.Dorsal = txtDorsalCiclista.Text;
-            objc.Pais = comboBoxPaisCiclista.Text;
+            
 
             BackgroundWorker worker = new BackgroundWorker();
             worker.WorkerReportsProgress = true;
@@ -319,15 +314,19 @@ namespace WpfAppCompetenciaCiclistica
         void worker_ProgressChangedCiclista(object sender, ProgressChangedEventArgs e)
         {
             statusCiclista.Value = e.ProgressPercentage;
+
             if (statusCiclista.Value == 100)
             {
+                clCiclistas objc = new clCiclistas();
+                objc.Nombre = txtNombreCiclista.Text;
+                objc.Apellido = txtApellidoCiclista.Text;
+                objc.ID = txtIDCiclista.Text;
+                objc.Equipo = txtEquipoCiclista.Text;
+                objc.Dorsal = txtDorsalCiclista.Text;
+                objc.Pais = comboBoxPaisCiclista.Text;
 
-                txtNombreCiclista.Clear();
-                txtApellidoCiclista.Clear();
-                txtIDCiclista.Clear();
-                txtEquipoCiclista.Clear();
-                txtDorsalCiclista.Clear();
-                this.flyIngresarCiclistas.IsOpen = false;
+                
+                
                 if (modciclista)
                 {
                     dgCiclistas.Items.Clear();
@@ -343,6 +342,12 @@ namespace WpfAppCompetenciaCiclistica
                     dgCiclistas.Items.Add(objc);
                 }
                 statusCiclista.Value = 0;
+                txtNombreCiclista.Clear();
+                txtApellidoCiclista.Clear();
+                txtIDCiclista.Clear();
+                txtEquipoCiclista.Clear();
+                txtDorsalCiclista.Clear();
+                this.flyIngresarCiclistas.IsOpen = false;
             }
         }
         private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
@@ -442,6 +447,13 @@ namespace WpfAppCompetenciaCiclistica
 
             imagen1.Visibility = Visibility.Hidden;
 
+            
+            
+            grdPodioEtapa.Visibility = Visibility.Visible;
+            txtBPrimeroEtapa.Text = "adfadf";
+            txtBSegundoEtapa.Text = "adfaf";
+            txtBTerceroEtapa.Text = "afadf";
+
             lbl1.Visibility = Visibility.Visible;
             lbl2.Visibility = Visibility.Visible;
             lbl3.Visibility = Visibility.Visible;
@@ -525,15 +537,11 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        Etapa objetapa = new Etapa();
+        
         private async void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
         {
 
-            objetapa.kilometros = int.Parse(txtKilometrosEtapa.Text);
-            objetapa.numero = int.Parse(txtNumEtapa.Text);
-            TextRange range = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
-            objetapa.descripcion = range.Text;
-            objetapa.Lugar = txtUbicacionEtapa.Text;
+            
 
             //Uso de listas 
             BackgroundWorker worker = new BackgroundWorker();
@@ -590,7 +598,16 @@ namespace WpfAppCompetenciaCiclistica
             estadoEtapa.Value = e.ProgressPercentage;
             if (estadoEtapa.Value == 100)
             {
+                Etapa objetapa = new Etapa();
+                objetapa.kilometros = int.Parse(txtKilometrosEtapa.Text);
+                objetapa.numero = int.Parse(txtNumEtapa.Text);
+                TextRange range = new TextRange(rchDescripcionEtapa.Document.ContentStart, rchDescripcionEtapa.Document.ContentEnd);
+                objetapa.descripcion = range.Text;
+                objetapa.Lugar = txtUbicacionEtapa.Text;
+
                 Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == int.Parse(txtNumEtapa.Text));
+
+
 
                 if (modificar)
                 {
@@ -666,8 +683,8 @@ namespace WpfAppCompetenciaCiclistica
         }
         #endregion
 
-        
 
+        int contEtapa = 0;
         public void EnumVisual(Visual myVisual)
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(myVisual); i++)
@@ -677,8 +694,16 @@ namespace WpfAppCompetenciaCiclistica
                 //// Do processing of the child visual object.
                 try
                 {
-                    MessageBox.Show((childVisual as FrameworkElement).ToString());
-                }catch
+                    if((childVisual as FrameworkElement).ToString().Contains("MahApps.Metro.Controls.Tile") == true)
+                    {
+                        //MessageBox.Show((childVisual as FrameworkElement).ToString());      //Para comprobar si vale el conteo de etapas
+                        contEtapa++;
+                    }
+
+
+
+                }
+                catch
                 {
 
                 }
@@ -686,7 +711,14 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
+        private void tlSimular_Click(object sender, RoutedEventArgs e)
+        {
+            EnumVisual(stack);
 
+            cListaEtapas obj = new cListaEtapas(contEtapa);
+            obj.crearEtapas(listCiclistas);
+
+        }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {

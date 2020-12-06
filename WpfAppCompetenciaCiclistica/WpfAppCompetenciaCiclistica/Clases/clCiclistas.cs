@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace WpfAppCompetenciaCiclistica.Clases
 {
-    class clCiclistas: INotifyPropertyChanged
+    public class clCiclistas: INotifyPropertyChanged
     {
         //datos de los ciclistas
 
@@ -19,7 +19,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
         private string equipo;
         private string dorsal;
         private string pais;
-        private float tiempo;
+        
 
         //constructor vacio
         public clCiclistas()

@@ -201,6 +201,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Clases\ClassEmulador.cs" />
     <Compile Include="Clases\clCiclistas.cs" />
     <Compile Include="Clases\clCompetencia.cs" />
     <Compile Include="Clases\clEtapas.cs" />
