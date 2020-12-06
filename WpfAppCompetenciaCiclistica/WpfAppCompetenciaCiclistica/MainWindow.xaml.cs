@@ -462,6 +462,16 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
+        private void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtNumCorredoresCompetencia_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
         private void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
