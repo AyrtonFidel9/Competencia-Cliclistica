@@ -278,15 +278,14 @@ namespace WpfAppCompetenciaCiclistica
 
         }
 
-        private void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
+        private async void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Pulse la etapa que desea eliminar", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+            await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea eliminar");
             eliminar = true;
         }
         private async void btnModificarEtapa_Click(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea modificar");
-            //MessageBox.Show(, "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
             modificar = true;
 
         }
@@ -319,6 +318,23 @@ namespace WpfAppCompetenciaCiclistica
 
             pbImagen1.Visibility = Visibility.Visible;
 
+            if (eliminar || modificar)
+            {
+                imagen1.Visibility = Visibility.Visible;
+
+                lbl1.Visibility = Visibility.Hidden;
+                lbl2.Visibility = Visibility.Hidden;
+                lbl3.Visibility = Visibility.Hidden;
+                lbl4.Visibility = Visibility.Hidden;
+
+                lblKilometros.Visibility = Visibility.Hidden;
+                lblNumero.Visibility = Visibility.Hidden;
+                lblDescipcion.Visibility = Visibility.Hidden;
+                lblUbicacion.Visibility = Visibility.Hidden;
+
+                pbImagen1.Visibility = Visibility.Hidden;
+            }
+
             if (eliminar)
             {
                 stack.Children.Remove(e.Source as Tile);
@@ -340,25 +356,9 @@ namespace WpfAppCompetenciaCiclistica
                 //modificar = false;
                 this.flyIngresoEtapa.IsOpen = true;
 
-                
             }
 
-            if (eliminar || modificar)
-            {
-                imagen1.Visibility = Visibility.Visible;
-
-                lbl1.Visibility = Visibility.Hidden;
-                lbl2.Visibility = Visibility.Hidden;
-                lbl3.Visibility = Visibility.Hidden;
-                lbl4.Visibility = Visibility.Hidden;
-
-                lblKilometros.Visibility = Visibility.Hidden;
-                lblNumero.Visibility = Visibility.Hidden;
-                lblDescipcion.Visibility = Visibility.Hidden;
-                lblUbicacion.Visibility = Visibility.Hidden;
-
-                pbImagen1.Visibility = Visibility.Hidden;
-            }
+            
         }
 
         private void btnAgregarEtapa_Click(object sender, RoutedEventArgs e)
