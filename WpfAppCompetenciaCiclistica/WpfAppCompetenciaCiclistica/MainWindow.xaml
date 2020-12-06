@@ -296,7 +296,7 @@
 
 
         <!--ESPACIO ETAPAS-->
-        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Hidden">
+        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -304,8 +304,8 @@
             <Grid Grid.Row="0" Margin="28,10,28,9">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#CC818181" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="#90CDEC"/>
+                        <GradientStop Color="#388BB5" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
                 <WrapPanel HorizontalAlignment="Right" Height="102" VerticalAlignment="Bottom">
@@ -345,7 +345,7 @@
                     <Label x:Name="lblKilometros" Content="-" HorizontalAlignment="Left" Margin="193,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.907,1.058" Visibility="Hidden"/>
                     <Label x:Name="lblUbicacion" Content="-" HorizontalAlignment="Left" Margin="193,80,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
                     <Label x:Name="lblNumero" Content="-" HorizontalAlignment="Left" Margin="193,110,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-                    <Image Margin="0" Name="imagen1" Stretch="Fill" Visibility="Visible"></Image>
+                    <Image Margin="0,40,0,0" Name="imagen1" Stretch="Fill" Visibility="Visible" Source="Images/fondo2.jpg"></Image>
                     <Image  Margin="10,200,5,2" Name="pbImagen1"  Stretch="Fill" Visibility="Hidden"/>
                 </Grid>
 
@@ -465,7 +465,7 @@
 
         <!--ESPACIO CICLISTAS-->
 
-        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Visible">
+        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Hidden">
             <DataGrid x:Name="dgCiclistas"  HorizontalAlignment="Left" Height="374" Margin="40,166,0,0" 
                       VerticalAlignment="Top" Width="819"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17" >
                 <DataGrid.Columns>
@@ -503,7 +503,7 @@
 
 
             <mah:FlyoutsControl  HorizontalAlignment="Right" >
-                <mah:Flyout x:Name="flyIngresar" Position="Right" Width="500">
+                <mah:Flyout x:Name="flyIngresarCiclistas" Position="Right" Width="500">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0"/>
@@ -550,12 +550,12 @@
 
 
 
-        <mah:HamburgerMenu  x:Name="menu"
-            Foreground="White" 
+        <mah:HamburgerMenu x:Name="menu"
+            Foreground="White"
              OpenPaneLength="240" 
-            DisplayMode="CompactInline" CompactPaneLength="48"
+            DisplayMode="CompactInline" CompactPaneLength="48" PaneBackground="#205169"
             HamburgerHeight="48" IsPaneOpen="False" ItemClick="HamburgerMenuControl_ItemClick" OptionsItemClick="HamburgerMenuControl_OnItemClick" ItemInvoked="menu_ItemInvoked">
-            <mah:HamburgerMenu.ItemTemplate >
+            <mah:HamburgerMenu.ItemTemplate>
                 <DataTemplate>
                     <Grid Height="50">
                         <Grid.ColumnDefinitions>
@@ -604,13 +604,16 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
                                     Margin="-1 0 -1 0"
-                                    Background="#7A7A7A">
-                            <TextBlock x:Name="Header"
+                                    Background="#205169">
+                            <TextBlock x:Name="txtHeader"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontSize="24"
                                            Foreground="White"
-                                           Text="{Binding Label}" Style="{StaticResource Nunito-Bold}"/>
+                                            FontWeight="Bold" Text="">
+
+                            </TextBlock>
+
                         </Border>
                         <mah:TransitioningContentControl Grid.Row="1"
                                                              Content="{Binding}"
@@ -635,7 +638,7 @@
 
 
         </mah:HamburgerMenu>
-        <TextBlock x:Name="txtBTitulo" Margin="375,0,331,575"  TextAlignment="Center" FontSize="34"/>
+        <TextBlock x:Name="txtBTitulo" Margin="375,0,331,575"  TextAlignment="Center" FontSize="34" Foreground="White" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
 
 
 

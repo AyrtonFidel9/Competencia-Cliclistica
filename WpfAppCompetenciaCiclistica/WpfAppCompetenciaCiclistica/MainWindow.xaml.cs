@@ -19,6 +19,7 @@ using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Threading;
 
 
+
 namespace WpfAppCompetenciaCiclistica
 {
     /// <summary>
@@ -33,7 +34,8 @@ namespace WpfAppCompetenciaCiclistica
         #region Listas y variables del programa
         internal List<clCiclistas> listCiclistas = new List<clCiclistas>();
         internal List<Etapa> listEtapas = new List<Etapa>();
-        //List<ClCompetencia> listaCompetencia = new List<ClCompetencia>();
+       
+        List<clCompetencia> listaCompetencia = new List<clCompetencia>();
         Tile PanelModificar = new Tile();
         string NombreCompetencia;
         #endregion
@@ -141,30 +143,23 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        /*
-        private void txtUbicacionCompetencia_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                txtNumCorredoresCompetencia.Focus();
-            }
-        }
-        
+
+
         private async void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
         {
             NombreCompetencia = txtNombreCompetencia.Text;
             ubicomp = txtUbicacionCompetencia.Text;
             TextRange textRange = new TextRange(rchDescripcionCompetencia.Document.ContentStart, rchDescripcionCompetencia.Document.ContentEnd);
             descripcion = textRange.Text;
+
             numCicli = int.Parse(txtNumCorredoresCompetencia.Text);
-            
-            ClCompetencia ciclista1 = new ClCompetencia(nomcomp, NombreCompetencia, descripcion, numCicli);
+            clCompetencia ciclista1 = new clCompetencia(NombreCompetencia, NombreCompetencia, descripcion, numCicli);
             listaCompetencia.Add(ciclista1);
             txtBTituloComp.Text = NombreCompetencia;
 
-            await this.ShowMessageAsync("¡Listo!","Datos ingresados correctamente");
-            
-        }*/
+            await this.ShowMessageAsync("¡Listo!", "Datos ingresados correctamente");
+
+        }
 
 
         #endregion
@@ -220,11 +215,19 @@ namespace WpfAppCompetenciaCiclistica
             objc.Dorsal = txtDorsalCiclista.Text;
             objc.Pais = comboBoxPaisCiclista.Text;
 
-            //Uso de listas
-
-            listCiclistas.Add(objc);
-
-            dgCiclistas.Items.Add(objc);
+            if (modciclista)
+            {
+                dgCiclistas.Items.Clear();
+                dgCiclistas.Items.Add(objc);
+                listCiclistas.Add(objc);
+                modciclista = false;
+            }
+            else
+            {
+                //Uso de listas
+                listCiclistas.Add(objc);
+                dgCiclistas.Items.Add(objc);
+            }
 
         }
         /*
@@ -238,17 +241,31 @@ namespace WpfAppCompetenciaCiclistica
 
         }
         */
+        private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
+        {
+            this.flyIngresarCiclistas.IsOpen = true;
+
+        }
+
         private void BtnModificarCiclista_Click(object sender, RoutedEventArgs e)
         {
             //await this.ShowMessageAsync("Aviso", "Pulse el ciclista que desea modificar");
             if (dgCiclistas.SelectedItem != null)
             {
                 modciclista = true;
-                this.flyIngresoCiclistas.IsOpen = true;
 
-                /*int num = int.Parse(titulo[titulo.Length - 1].ToString());
-                Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num); */
+                //MessageBox.Show((dgCiclistas.SelectedItem as clCiclistas).ID);
+                string id = (dgCiclistas.SelectedItem as clCiclistas).ID;
+                clCiclistas competidor = listCiclistas.FirstOrDefault(x => x.ID == id);
+                txtNombreCiclista.Text = competidor.Nombre;
+                txtApellidoCiclista.Text = competidor.Apellido;
+                txtDorsalCiclista.Text = competidor.Dorsal;
+                txtIDCiclista.Text = competidor.ID;
+                txtEquipoCiclista.Text = competidor.Equipo;
+                comboBoxPaisCiclista.Text = competidor.Pais;
+                this.flyIngresarCiclistas.IsOpen = true;
 
+                listCiclistas.Remove(competidor);
             }
         }
 
@@ -384,12 +401,7 @@ namespace WpfAppCompetenciaCiclistica
             this.flyIngresoCiclistas.IsOpen = true;
         }
 
-        private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
-        {
-            this.flyIngresar.IsOpen = true;
-
-        }
-
+       
         private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.A && e.Key <= Key.Z)
@@ -476,10 +488,7 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        private void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void txtNumCorredoresCompetencia_KeyDown(object sender, KeyEventArgs e)
         {

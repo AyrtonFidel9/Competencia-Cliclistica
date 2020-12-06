@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinAppCompetencia
+namespace WpfAppCompetenciaCiclistica.Clases
 {
-    class ClCompetencia
+    class clCompetencia
     {
         private string nombrecomp;
         private string ubicacomp;
@@ -14,12 +14,12 @@ namespace WinAppCompetencia
         private int numCicli;
 
 
-        public ClCompetencia(string Nom, string ubi, string descri, int numcicli)
+        public clCompetencia(string Nom, string ubi, string descri, int numcicli)
         {
-            nombrecomp = Nom;
-            ubicacomp = ubi;
-            descricomp = descri;
-            numCicli = numcicli;
+            this.nombrecomp = Nom;
+            this.ubicacomp = ubi;
+            this.descricomp = descri;
+            this.numCicli = numcicli;
 
         }
 
@@ -45,5 +45,4 @@ namespace WinAppCompetencia
             set { numCicli = value; }
         }
     }
-
 }

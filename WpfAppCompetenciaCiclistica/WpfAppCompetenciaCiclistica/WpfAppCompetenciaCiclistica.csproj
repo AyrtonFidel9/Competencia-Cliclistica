@@ -313,5 +313,11 @@
   <ItemGroup>
     <Resource Include="Images\podio.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ciclistaLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fondo2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
