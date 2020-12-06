@@ -342,6 +342,23 @@ namespace WpfAppCompetenciaCiclistica
 
                 
             }
+
+            if (eliminar || modificar)
+            {
+                imagen1.Visibility = Visibility.Visible;
+
+                lbl1.Visibility = Visibility.Hidden;
+                lbl2.Visibility = Visibility.Hidden;
+                lbl3.Visibility = Visibility.Hidden;
+                lbl4.Visibility = Visibility.Hidden;
+
+                lblKilometros.Visibility = Visibility.Hidden;
+                lblNumero.Visibility = Visibility.Hidden;
+                lblDescipcion.Visibility = Visibility.Hidden;
+                lblUbicacion.Visibility = Visibility.Hidden;
+
+                pbImagen1.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnAgregarEtapa_Click(object sender, RoutedEventArgs e)
