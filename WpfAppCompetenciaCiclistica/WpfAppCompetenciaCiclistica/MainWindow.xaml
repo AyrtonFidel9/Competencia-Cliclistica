@@ -6,16 +6,54 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:WpfAppCompetenciaCiclistica"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        
+        xmlns:src="clr-namespace:WpfAppCompetenciaCiclistica.Clases"
         xmlns:uc="clr-namespace:WpfAppCompetenciaCiclistica.Controles"
         mc:Ignorable="d"
         Title="Competencia Ciclística" Height="650" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
     <mah:MetroWindow.Resources>
-
+        <src:clValidacion x:Key="clValidacion"></src:clValidacion>
         <Style x:Key="Nunito-Bold">
             <Style.Setters>
                 <Setter Property="TextElement.FontFamily" Value="/Fonts/#Nunito Bold"></Setter>
             </Style.Setters>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="validacion1">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                   ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="2" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type RichTextBox}" x:Key="rchValidacion1">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                   ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="2" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </mah:MetroWindow.Resources>
     <Grid>
@@ -286,22 +324,80 @@
                     <StackPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
                             <TextBlock Width="110" Text="Nombre" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
-                            <TextBox  x:Name="txtNombreCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtNombreCompetencia_KeyDown"/>
+                            <TextBox  x:Name="txtNombreCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" 
+                                      KeyDown ="txtNombreCompetencia_KeyDown" VerticalContentAlignment="Center" Style="{StaticResource validacion1}">
+                                <TextBox.Text>
+                                    <Binding Path="Otros" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+
+                                            <DataErrorValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Width="110" Text="Ubicación" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                            <TextBox  x:Name="txtUbicacionCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtUbicacionCompetencia_KeyDown"/>
+                            <TextBox  x:Name="txtUbicacionCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                      FontSize="15" KeyDown ="txtUbicacionCompetencia_KeyDown"  VerticalContentAlignment="Center" Style="{StaticResource validacion1}">
+                                <TextBox.Text>
+                                    <Binding Path="UbiCompetencia" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+
+                                            <DataErrorValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Left" Margin="60,20,0,0">
                             <TextBlock Width="110" Text="Descripción" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
 
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Left" Margin="60,5,0,0" Width="350">
-                            <RichTextBox x:Name="rchDescripcionCompetencia" Width="280" Height="90" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15"/>
+                            <RichTextBox x:Name="rchDescripcionCompetencia" Width="280" Height="90" 
+                                         FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                         FontSize="15" Style="{StaticResource rchValidacion1}"
+                                          >
+                                <RichTextBox.Document>
+                                    <FlowDocument>
+                                        <Paragraph>
+                                            <Run>
+                                                <Binding Path="RchOtros" Source="{StaticResource clValidacion}" 
+                                                 ValidatesOnExceptions="True"
+                                                 UpdateSourceTrigger="PropertyChanged"> 
+                                                    <Binding.ValidationRules>
+
+                                                        <DataErrorValidationRule/>
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </Run>
+                                        </Paragraph>
+                                    </FlowDocument>
+                                </RichTextBox.Document>
+
+                            </RichTextBox>
                         </WrapPanel>
                         <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Width="110" Text="N° Ciclistas" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik" />
-                            <TextBox  x:Name="txtNumCorredoresCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="15" KeyDown ="txtNumCorredoresCompetencia_KeyDown"/>
+                            <TextBox  x:Name="txtNumCorredoresCompetencia"  Width="170" Height="30" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                      FontSize="15" KeyDown ="txtNumCorredoresCompetencia_KeyDown"
+                                      Style="{StaticResource validacion1}"  VerticalContentAlignment="Center">
+                                <TextBox.Text>
+                                    <Binding Path="CantCiclistas" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+
+                                            <DataErrorValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <mah:MetroProgressBar x:Name="estadoCompetencia" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="300" Minimum="0" Maximum="100"/>
@@ -512,16 +608,58 @@
                         <StackPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="0,40,0,0">
                                 <TextBlock Text="Kilómetros"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                                <TextBox x:Name="txtKilometrosEtapa" Width="170" Height="30"   FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtKilometrosEtapa_KeyDown"/>
+                                <TextBox x:Name="txtKilometrosEtapa" Width="170" Height="30"   
+                                         FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                         FontSize="17" KeyDown="txtKilometrosEtapa_KeyDown"
+                                         Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                                    <TextBox.Text>
+                                        <Binding Path="Km" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+
+                                                <DataErrorValidationRule/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                                 <TextBlock Text="Ubicación"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                                <TextBox  x:Name="txtUbicacionEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtUbicacionEtapa_KeyDown"/>
+                                <TextBox  x:Name="txtUbicacionEtapa" Width="170" Height="30"  
+                                          FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                          FontSize="17" KeyDown="txtUbicacionEtapa_KeyDown"
+                                           Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                                    <TextBox.Text>
+                                        <Binding Path="Caracteres" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+
+                                                <DataErrorValidationRule/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
                             </WrapPanel>
 
                             <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
                                 <TextBlock Text="N° Etapa"  Width="110" FontSize="20" Margin="0,3,0,0" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                                <TextBox  x:Name="txtNumEtapa" Width="170" Height="30"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" FontSize="17" KeyDown="txtNumEtapa_KeyDown"/>
+                                <TextBox  x:Name="txtNumEtapa" Width="170" Height="30"  
+                                          FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik Light" 
+                                          FontSize="17" KeyDown="txtNumEtapa_KeyDown"
+                                           Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                                    <TextBox.Text>
+                                        <Binding Path="NumEtapas" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+
+                                                <DataErrorValidationRule/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
                             </WrapPanel>
 
 
@@ -641,15 +779,82 @@
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="1" Text="Nombre" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top"/>
                         <TextBox Grid.Row="1" x:Name="txtNombreCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top"
-                        HorizontalAlignment="Left" Width="210" KeyDown="txtNombre_KeyDown"  />
+                        HorizontalAlignment="Left" Width="210" KeyDown="txtNombre_KeyDown"
+                                 Style="{StaticResource validacion1}" HorizontalContentAlignment="Center"
+                                 FontSize="15">
+                            <TextBox.Text>
+                                <Binding Path="Nombre" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+
+                        </TextBox>
                         <TextBlock Grid.Row="2"  Text="Apellido" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        <TextBox Grid.Row="2" x:Name="txtApellidoCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtApellido_KeyDown"/>
+                        <TextBox Grid.Row="2" x:Name="txtApellidoCiclista" Height="24" Margin="230,13,0,0" 
+                                 VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" FontSize="15" 
+                                 KeyDown="txtApellido_KeyDown" Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                            <TextBox.Text>
+                                <Binding Path="Apellido" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            
+                        </TextBox>
                         <TextBlock Grid.Row="3" Text="ID" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="476" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        <TextBox Grid.Row="3" x:Name="txtIDCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtID_KeyDown"/>
+                        <TextBox Grid.Row="3" x:Name="txtIDCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtID_KeyDown" 
+                                 Style="{StaticResource validacion1}" HorizontalContentAlignment="Center" FontSize="15">
+                            <TextBox.Text>
+                                <Binding Path="Cedula" Source="{StaticResource clValidacion}" 
+                                             ValidatesOnExceptions="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBlock Grid.Row="4" Text="Equipo" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        <TextBox Grid.Row="4" x:Name="txtEquipoCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                        <TextBox Grid.Row="4" x:Name="txtEquipoCiclista" Height="24" Margin="230,13,0,0" 
+                                 VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown" 
+                                 Style="{StaticResource validacion1}" HorizontalContentAlignment="Center" FontSize="15">
+                                <TextBox.Text>
+                                    <Binding Path="Equipo" Source="{StaticResource clValidacion}" 
+                                                     ValidatesOnExceptions="True"
+                                                     UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+
+                                            <DataErrorValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+
+                        </TextBox>
                         <TextBlock Grid.Row="5" Text="Dorsal" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
-                        <TextBox Grid.Row="5" x:Name="txtDorsalCiclista" Height="24" Margin="230,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" KeyDown="txtEquipo_KeyDown"/>
+                        <TextBox Grid.Row="5" x:Name="txtDorsalCiclista" Height="24" Margin="230,16,0,0" 
+                                 VerticalAlignment="Top" HorizontalAlignment="Left" Width="210"  FontSize="15"
+                                 KeyDown="txtEquipo_KeyDown"    Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                            <TextBox.Text>
+                                <Binding Path="Dorsal" Source="{StaticResource clValidacion}" 
+                                                 ValidatesOnExceptions="True"
+                                                 UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBlock Grid.Row="6" Text="País" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
                         <ComboBox Grid.Row="6" x:Name="comboBoxPaisCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210">
                             <ComboBoxItem Content="Ecuador"/>

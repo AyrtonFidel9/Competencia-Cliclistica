@@ -15,6 +15,17 @@ namespace WpfAppCompetenciaCiclistica.Clases
         private string telefono;
         private string direccion;
         private string email;
+        private string numero;
+        private string caracteres;
+        private string otros;
+        private string rchOtros;
+        private string km;
+        private string cantCiclistas;
+        private string numEtapas;
+        private string ubiCompetencia;
+        private string equipo;
+        private string dorsal;
+
 
 
         string IDataErrorInfo.Error
@@ -31,6 +42,16 @@ namespace WpfAppCompetenciaCiclistica.Clases
         public string Telefono { get => telefono; set => telefono = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public string Email { get => email; set => email = value; }
+        public string Numero { get => numero; set => numero = value; }
+        public string Caracteres { get => caracteres; set => caracteres = value; }
+        public string Otros { get => otros; set => otros = value; }
+        public string RchOtros { get => rchOtros; set => rchOtros = value; }
+        public string Km { get => km; set => km = value; }
+        public string CantCiclistas { get => cantCiclistas; set => cantCiclistas = value; }
+        public string NumEtapas { get => numEtapas; set => numEtapas = value; }
+        public string UbiCompetencia { get => ubiCompetencia; set => ubiCompetencia = value; }
+        public string Equipo { get => equipo; set => equipo = value; }
+        public string Dorsal { get => dorsal; set => dorsal = value; }
 
         string IDataErrorInfo.this[string columnName]
         {
@@ -44,6 +65,66 @@ namespace WpfAppCompetenciaCiclistica.Clases
                         result = "No se admiten valores numéricos o campos vacíos.";
                     }
                 }
+                if (columnName == "Caracteres")
+                {
+                    if (!cadenas(caracteres))
+                    {
+                        result = "No se admiten valores numéricos o campos vacíos.";
+                    }
+                }
+                if(columnName == "UbiCompetencia")
+                {
+                    if (!cadenas(ubiCompetencia))
+                    {
+                        result = "No se admiten valores numéricos o campos vacíos.";
+                    }
+                }
+                if (columnName == "Equipo")
+                {
+                    if (!cadenas(equipo))
+                    {
+                        result = "No se admiten valores numéricos o campos vacíos.";
+                    }
+                }
+                if (columnName == "Numero")
+                {
+                    if(!numeros(numero))
+                    {
+                        result = "No se admiten caracteres o campos vacíos.";
+                    }
+              
+                }
+                if (columnName == "Dorsal")
+                {
+                    if(!numeros(dorsal))
+                    {
+                        result = "No se admiten caracteres o campos vacíos.";
+                    }
+              
+                }
+                if(columnName == "Km")
+                {
+                    if (!numeros(km))
+                    {
+                        result = "No se admiten caracteres o campos vacíos.";
+                    }
+                }
+                if(columnName == "CantCiclistas")
+                {
+                    if (!numeros(cantCiclistas))
+                    {
+                        result = "No se admiten caracteres o campos vacíos.";
+                    }
+                }
+                if(columnName == "NumEtapas")
+                {
+                    if (!numeros(numEtapas))
+                    {
+                        result = "No se admiten caracteres o campos vacíos.";
+                    }
+                }
+
+
                 if (columnName == "Apellido")
                 {
                     if (!cadenas(apellido))
@@ -51,6 +132,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
                         result = "No se admiten valores numéricos o campos vacíos.";
                     }
                 }
+
                 if (columnName == "Cedula")
                 {
                     if (!cedula(_cedula))
@@ -63,18 +145,27 @@ namespace WpfAppCompetenciaCiclistica.Clases
                         result = "La cédula debe contener 10 dígitos.";
                     }
                 }
-                if (columnName == "Telefono")
+                if(columnName == "Otros" || columnName == "RchOtros")
                 {
-                    if (!cedula(telefono))
+                    if (!camposVacios(otros))
                     {
-                        result = "No se admiten caracteres o campos vacíos.";
+                        result = "No se admiten campos vacíos.";
+                    }
+                }
 
-                    }
-                    if (!tamanio(telefono))
-                    {
-                        result = "El teléfono debe contener 10 dígitos.";
-                    }
-                }/*
+                //if (columnName == "Telefono")
+                //{
+                //    if (!cedula(telefono))
+                //    {
+                //        result = "No se admiten caracteres o campos vacíos.";
+
+                //    }
+                //    if (!tamanio(telefono))
+                //    {
+                //        result = "El teléfono debe contener 10 dígitos.";
+                //    }
+                //}
+                /*
                 if (columnName == "Direccion")
                 {
                     if (string.IsNullOrEmpty(direccion))
@@ -151,6 +242,28 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 }
                 return true;
             }
+            return true;
+        }
+
+        public bool numeros(string valor)
+        {
+            if (!camposVacios(valor))
+            {
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < valor.Length; i++)
+                {
+                    if (!((int)valor[i] >= 48 && (int)valor[i] <= 57))
+                    {
+                        return false;
+
+                    }
+                }
+            }
+            
+
             return true;
         }
         /*
