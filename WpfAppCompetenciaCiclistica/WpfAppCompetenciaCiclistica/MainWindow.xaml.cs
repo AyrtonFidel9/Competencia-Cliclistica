@@ -124,8 +124,9 @@ namespace WpfAppCompetenciaCiclistica
         #endregion
 
         #region Codigo para la competencia
+
         string ubicomp, descripcion;
-        int numCicli, posicion;
+        int numCicli;
 
         private void txtNombreCompetencia_KeyDown(object sender, KeyEventArgs e)
         {
@@ -143,24 +144,74 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-
+        private void limpiarFormCompetencia()
+        {
+            txtNombreCompetencia.Clear();
+            txtUbicacionCompetencia.Clear();
+            rchDescripcionCompetencia.Document.Blocks.Clear();
+            txtNumCorredoresCompetencia.Clear();
+        }
 
         private async void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
         {
+            
             NombreCompetencia = txtNombreCompetencia.Text;
             ubicomp = txtUbicacionCompetencia.Text;
             TextRange textRange = new TextRange(rchDescripcionCompetencia.Document.ContentStart, rchDescripcionCompetencia.Document.ContentEnd);
             descripcion = textRange.Text;
-
             numCicli = int.Parse(txtNumCorredoresCompetencia.Text);
             clCompetencia ciclista1 = new clCompetencia(NombreCompetencia, NombreCompetencia, descripcion, numCicli);
             listaCompetencia.Add(ciclista1);
             txtBTituloComp.Text = NombreCompetencia;
 
-            await this.ShowMessageAsync("¡Listo!", "Datos ingresados correctamente");
+            await this.ShowMessageAsync("¡Perfecto!", "Datos ingresados correctamente");
+            this.flyIngresoCiclistas.IsOpen = false;
+            limpiarFormCompetencia();
 
         }
 
+        private async void btnEliminarCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+            if (listaCompetencia.Count != 0)
+            {
+                await this.ShowMessageAsync("¡Atención!", "Competencia " + NombreCompetencia + " ha sido eliminada.");
+                clCompetencia competencia = listaCompetencia.FirstOrDefault(x => x.Nombre == NombreCompetencia);
+                txtBTituloComp.Text = "(Inserte el nombre de una competencia)";
+                NombreCompetencia = string.Empty;
+                ubicomp = string.Empty;
+                descripcion = string.Empty;
+                numCicli = 0;
+                listaCompetencia.Remove(competencia);
+            }
+            else
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. Ingrese una, por favor.");
+
+            
+            
+        }
+
+        private async void btnModificarCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+            if(listaCompetencia.Count != 0)
+            {
+                await this.ShowMessageAsync("¡Atención!", "Se modificarán los datos de la competencia");
+                clCompetencia competencia = listaCompetencia.FirstOrDefault(x => x.Nombre == NombreCompetencia);
+                txtNombreCompetencia.Text = competencia.Nombre;
+                txtUbicacionCompetencia.Text = competencia.Ubicacion;
+                TextRange textRange = new TextRange(rchDescripcionCompetencia.Document.ContentStart, rchDescripcionCompetencia.Document.ContentEnd);
+                textRange.Text = competencia.Descripcion;
+                txtNumCorredoresCompetencia.Text = competencia.NumCiclista.ToString();
+                listaCompetencia.Remove(competencia);
+                this.flyIngresoCiclistas.IsOpen = true;
+            }
+            else
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. Ingrese una, por favor.");
+        }
+
+        private void btnAgregarCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+            this.flyIngresoCiclistas.IsOpen = true;
+        }
 
         #endregion
 
@@ -230,17 +281,6 @@ namespace WpfAppCompetenciaCiclistica
             }
 
         }
-        /*
-        private void btnRegresar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btnAgregar_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-        */
         private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
         {
             this.flyIngresarCiclistas.IsOpen = true;
@@ -396,10 +436,7 @@ namespace WpfAppCompetenciaCiclistica
         {
             this.flyIngresoEtapa.IsOpen = true;
         }
-        private void btnAgregarCompetencia_Click(object sender, RoutedEventArgs e)
-        {
-            this.flyIngresoCiclistas.IsOpen = true;
-        }
+        
 
        
         private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
@@ -445,7 +482,7 @@ namespace WpfAppCompetenciaCiclistica
                     modificar = false;
                 }else
                 {
-                    await this.ShowMessageAsync("Aviso", "Numero de etapa ya existe");
+                    await this.ShowMessageAsync("Aviso", "Número de etapa ya existe");
                 }
             }
             else
@@ -458,7 +495,7 @@ namespace WpfAppCompetenciaCiclistica
                     crearTilesEtapas("Etapa " + objetapa.numero);
                 }
                 else
-                    await this.ShowMessageAsync("Aviso", "Numero de etapa ya existe");
+                    await this.ShowMessageAsync("Aviso", "Número de etapa ya existe");
             }
 
             
@@ -495,6 +532,8 @@ namespace WpfAppCompetenciaCiclistica
 
         }
 
+        
+
         private void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -503,6 +542,8 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
         #endregion
+
+        
 
         public void EnumVisual(Visual myVisual)
         {
