@@ -108,6 +108,37 @@ namespace WpfAppCompetenciaCiclistica.Clases
             obtenerListaCn();
         }
 
+        public void ordenarLista()
+        {
+            cNewCiclista objAux;
+            int hsi, msi, si;
+            int hsj, msj, sj;
+            for(int i = 0; i < listaCn.Count; i++)
+            {
+                for(int j = 1; j < listaCn.Count; j++)
+                {
+                    if (listaCn.Count != 1)
+                    {
+                        hsi = listaCn[i].getHora() * 3600;
+                        msi = listaCn[i].getMinuto() * 60;
+                        si = hsi + msi + listaCn[i].getSegundo();
+
+                        hsj = listaCn[j].getHora() * 3600;
+                        msj = listaCn[j].getMinuto() * 60;
+                        sj = hsj + msj + listaCn[j].getSegundo();
+                        if (si > sj)
+                        {
+                            objAux = listaCn[j];
+                            listaCn[j] = listaCn[i];
+                            listaCn[i] = objAux;
+
+                        }
+
+                    }
+                }
+            }
+            
+        }
 
     }
 
@@ -126,8 +157,9 @@ namespace WpfAppCompetenciaCiclistica.Clases
 
             for (int y = 1; y <= n; y++)//recorre las etapas creandolas
             {
-                
-                etapa[y].crearListaEtapas(lista); //crea cada etapa con la lista de ciclistas cada uno con su tiempo
+                ClassEmulador obj = new ClassEmulador();
+                obj.crearListaEtapas(lista);
+                etapa.Add(obj);
                 
             }
         }
@@ -148,7 +180,6 @@ namespace WpfAppCompetenciaCiclistica.Clases
 
             s = hora + " : " + minuto + " : " + segundo;
             return s; //devuelve el tiempo como un string 
-
         }
 
 
