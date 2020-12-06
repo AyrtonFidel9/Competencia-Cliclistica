@@ -296,7 +296,7 @@
 
 
         <!--ESPACIO ETAPAS-->
-        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Visible">
+        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -465,7 +465,7 @@
 
         <!--ESPACIO CICLISTAS-->
 
-        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Hidden">
+        <Grid x:Name="grCiclistas" HorizontalAlignment="Right" Width="895" Height="575" VerticalAlignment="Bottom" Visibility="Visible">
             <DataGrid x:Name="dgCiclistas"  HorizontalAlignment="Left" Height="374" Margin="40,166,0,0" 
                       VerticalAlignment="Top" Width="819"  FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17" >
                 <DataGrid.Columns>
@@ -486,14 +486,14 @@
                 </Grid.Background>
 
                 <Button x:Name="btnAgregarCiclista" Margin="518,10,227,21" Click="btnAgregarCiclista_Click" Content="{iconPacks:BootstrapIcons PersonPlusFill, Width=50,Height=30}" />
-                <Button x:Name="btnEliminarCiclista" Margin="622,10,120,21" Click="btnAcutaliza_Click">
+                <Button x:Name="btnEliminarCiclista" Margin="622,10,120,21" Click="BtnEliminarCiclista_Click">
                     <Button.Content>
                         <iconPacks:BootstrapIcons Kind="TrashFill" Width="50" Height="30"></iconPacks:BootstrapIcons>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btnModificarCiclista" Margin="726,10,13,21" Click="btnAcutaliza_Click">
+                <Button x:Name="btnModificarCiclista" Margin="726,10,13,21" Click="BtnModificarCiclista_Click">
                     <Button.Content>
-                        <iconPacks:BootstrapIcons Kind="TrashFill" Width="50" Height="30"></iconPacks:BootstrapIcons>
+                        <iconPacks:BootstrapIcons Kind="PencilSquare" Width="30" Height="40" ></iconPacks:BootstrapIcons>
                     </Button.Content>
                 </Button>
 

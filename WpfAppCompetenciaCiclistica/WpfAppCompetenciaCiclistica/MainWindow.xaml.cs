@@ -176,7 +176,8 @@ namespace WpfAppCompetenciaCiclistica
 
 
         //------------------------------CODIGO DE LOS CICLISTAS----------------------------------//
-       int contador = 0;
+        //int contador = 0;
+        bool modciclista;
         private void txtNombre_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -226,7 +227,7 @@ namespace WpfAppCompetenciaCiclistica
             dgCiclistas.Items.Add(objc);
 
         }
-
+        /*
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -235,20 +236,33 @@ namespace WpfAppCompetenciaCiclistica
         {
 
 
+        }
+        */
+        private void BtnModificarCiclista_Click(object sender, RoutedEventArgs e)
+        {
+            //await this.ShowMessageAsync("Aviso", "Pulse el ciclista que desea modificar");
+            if (dgCiclistas.SelectedItem != null)
+            {
+                modciclista = true;
+                this.flyIngresoCiclistas.IsOpen = true;
 
+                /*int num = int.Parse(titulo[titulo.Length - 1].ToString());
+                Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == num); */
 
+            }
         }
 
-        private void btnAcutaliza_Click(object sender, RoutedEventArgs e)
+        private async void BtnEliminarCiclista_Click(object sender, RoutedEventArgs e)
         {
-            dgCiclistas.Items.Clear();
-            foreach (clCiclistas indice in listCiclistas)
+            if (dgCiclistas.SelectedItem != null)
             {
-                if (indice != null)
-                {
-                    dgCiclistas.Items.Add(indice);
-                }
-
+                listCiclistas.RemoveAt(dgCiclistas.SelectedIndex);
+                //dgCiclistas.ItemsSource = null;
+                dgCiclistas.Items.RemoveAt(dgCiclistas.SelectedIndex);
+            }
+            else
+            {
+                await this.ShowMessageAsync("Atención", "Debe seleccionar un ciclista, por favor");
             }
         }
         #endregion
