@@ -728,9 +728,9 @@ namespace WpfAppCompetenciaCiclistica
             }
 
             
-            /*txtBPrimeroEtapa.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
-            txtBSegundoEtapa.Text = obj.etapa[0].listaCn[1].Nombre + " " + obj.etapa[0].listaCn[1].Apellido;
-            txtBTerceroEtapa.Text = obj.etapa[0].listaCn[2].Nombre + " " + obj.etapa[0].listaCn[2].Apellido;*/
+            txtBPrimero.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
+            txtBSegundo.Text = obj.etapa[0].listaCn[1].Nombre + " " + obj.etapa[0].listaCn[1].Apellido;
+            txtBTercero.Text = obj.etapa[0].listaCn[2].Nombre + " " + obj.etapa[0].listaCn[2].Apellido;
 
         }
 

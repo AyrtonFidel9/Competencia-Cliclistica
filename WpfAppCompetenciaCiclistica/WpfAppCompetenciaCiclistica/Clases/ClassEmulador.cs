@@ -72,6 +72,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
             public int Hora() { return hora; }
             public int Minuto() { return minuto; }
             public int Segundo() { return segundo; }
+            public void sSegundo(int val) { segundo = segundo - val; }
             private string tiempo;
 
             
@@ -99,7 +100,9 @@ namespace WpfAppCompetenciaCiclistica.Clases
         }//--
 
 
-
+        int BonificacionPrimera = 15;
+        int BonificacionSegunda = 10;
+        int BonificacionTercera = 5;
         //Transformar objeto antiguo a nuevo y agregar a lista de competencia
         public void obtenerListaCn()
         {
@@ -112,14 +115,21 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 int s = r.Next(0, 61);
                 listaCn.Add(crearObjetaListaCn(listaC[i], h, m, s));
             }
+            ordenarLista();
+            listaCn[0].sSegundo(BonificacionPrimera);
+            listaCn[1].sSegundo(BonificacionSegunda);
+            listaCn[2].sSegundo(BonificacionTercera);
+
         }//++
 
         public void crearListaEtapas(List<clCiclistas> lista)
         {
             addNewListaCiclista(lista);
             obtenerListaCn();
-            //ordenarLista();
+            
         }
+
+        
 
         public void ordenarLista()
         {
