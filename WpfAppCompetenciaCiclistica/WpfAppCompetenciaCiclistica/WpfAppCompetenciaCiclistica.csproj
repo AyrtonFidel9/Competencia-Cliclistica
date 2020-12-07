@@ -324,6 +324,11 @@
     <Content Include="Ayuda\ayudaFinal.html" />
     <None Include="Resources\ayudaFinal.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WinAppLogin\WinAppLogin\WinAppLogin.csproj">
+      <Project>{eb029300-ab39-43aa-8d23-8b2372828a55}</Project>
+      <Name>WinAppLogin</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

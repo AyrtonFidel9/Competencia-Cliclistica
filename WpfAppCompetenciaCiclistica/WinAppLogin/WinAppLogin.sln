@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1300
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppCompetenciaCiclistica", "WpfAppCompetenciaCiclistica\WpfAppCompetenciaCiclistica.csproj", "{05844CE3-CECB-4E3C-A656-E10FB96948C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppLogin", "WinAppLogin\WinAppLogin\WinAppLogin.csproj", "{EB029300-AB39-43AA-8D23-8B2372828A55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAppLogin", "WinAppLogin\WinAppLogin.csproj", "{EB029300-AB39-43AA-8D23-8B2372828A55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05844CE3-CECB-4E3C-A656-E10FB96948C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05844CE3-CECB-4E3C-A656-E10FB96948C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05844CE3-CECB-4E3C-A656-E10FB96948C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05844CE3-CECB-4E3C-A656-E10FB96948C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB029300-AB39-43AA-8D23-8B2372828A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB029300-AB39-43AA-8D23-8B2372828A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB029300-AB39-43AA-8D23-8B2372828A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {717DA358-1196-4B16-98B4-28DF08550EA0}
+		SolutionGuid = {726C9F5D-215B-4B23-9895-319F0E75DF7C}
 	EndGlobalSection
 EndGlobal
