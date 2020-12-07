@@ -450,9 +450,8 @@ namespace WpfAppCompetenciaCiclistica
             
             
             grdPodioEtapa.Visibility = Visibility.Visible;
-            txtBPrimeroEtapa.Text = "adfadf";
-            txtBSegundoEtapa.Text = "adfaf";
-            txtBTerceroEtapa.Text = "afadf";
+            
+            
 
             lbl1.Visibility = Visibility.Visible;
             lbl2.Visibility = Visibility.Visible;
@@ -711,12 +710,27 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
+        
+
         private void tlSimular_Click(object sender, RoutedEventArgs e)
         {
             EnumVisual(stack);
-
             cListaEtapas obj = new cListaEtapas(contEtapa);
+            
+            
             obj.crearEtapas(listCiclistas);
+            
+
+            for (int i = 0; i< listCiclistas.Count; i++)
+            {
+                DgClasificacion.Items.Add(obj.etapa[0].listaCn[i]);
+
+            }
+
+            
+            /*txtBPrimeroEtapa.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
+            txtBSegundoEtapa.Text = obj.etapa[0].listaCn[1].Nombre + " " + obj.etapa[0].listaCn[1].Apellido;
+            txtBTerceroEtapa.Text = obj.etapa[0].listaCn[2].Nombre + " " + obj.etapa[0].listaCn[2].Apellido;*/
 
         }
 

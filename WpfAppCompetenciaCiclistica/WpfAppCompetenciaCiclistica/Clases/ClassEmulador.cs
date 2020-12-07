@@ -39,30 +39,42 @@ namespace WpfAppCompetenciaCiclistica.Clases
             private string nombre;
             private string apellido;
             private string equipo;
-            private string numero;
+            private string dorsal;
+            
+            Random  r = new Random();
+
             private int hora;
-            private int minuto;
+            private int minuto ;
             private int segundo;
+
+            public string Nombre { get => nombre; set => nombre = value; }
+            public string Apellido { get => apellido; set => apellido = value; }
+            public string Equipo { get => equipo; set => equipo = value; }
+            public string Dorsal { get => dorsal; set => dorsal = value; }
+            public string Tiempo { get => tiempo; set => tiempo = value; }
 
             public cNewCiclista() { }
 
             public cNewCiclista(string nombre, string apellido, string equipo, string numero, int hora, int min, int seg)
             {
-                this.nombre = nombre;
-                this.apellido = apellido;
-                this.equipo = equipo;
-                this.numero = numero;
-                this.hora = hora;
-                this.minuto = min;
-                this.segundo = seg;
+                this.Nombre = nombre;
+                this.Apellido = apellido;
+                this.Equipo = equipo;
+                this.dorsal = numero;
+                this.hora = r.Next(1,8);
+                this.minuto = r.Next(0, 61);
+                this.segundo = r.Next(0, 61);
+                this.tiempo = hora + ":" + minuto + ":" + segundo;
             }
-            public string getNombre() { return nombre; }
-            public string getApellido() { return apellido; }
-            public string getEquipo() { return equipo; }
-            public string getNumero() { return numero; }
-            public int getHora() { return hora; }
-            public int getMinuto() { return minuto; }
-            public int getSegundo() { return segundo; }
+            
+
+            
+            public int Hora() { return hora; }
+            public int Minuto() { return minuto; }
+            public int Segundo() { return segundo; }
+            private string tiempo;
+
+            
         }
 
 
@@ -106,6 +118,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
         {
             addNewListaCiclista(lista);
             obtenerListaCn();
+            //ordenarLista();
         }
 
         public void ordenarLista()
@@ -119,13 +132,13 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 {
                     if (listaCn.Count != 1)
                     {
-                        hsi = listaCn[i].getHora() * 3600;
-                        msi = listaCn[i].getMinuto() * 60;
-                        si = hsi + msi + listaCn[i].getSegundo();
+                        hsi = listaCn[i].Hora() * 3600;
+                        msi = listaCn[i].Minuto() * 60;
+                        si = hsi + msi + listaCn[i].Segundo();
 
-                        hsj = listaCn[j].getHora() * 3600;
-                        msj = listaCn[j].getMinuto() * 60;
-                        sj = hsj + msj + listaCn[j].getSegundo();
+                        hsj = listaCn[j].Hora() * 3600;
+                        msj = listaCn[j].Minuto() * 60;
+                        sj = hsj + msj + listaCn[j].Segundo();
                         if (si > sj)
                         {
                             objAux = listaCn[j];
@@ -145,17 +158,21 @@ namespace WpfAppCompetenciaCiclistica.Clases
     public class cListaEtapas
     {
         public List<ClassEmulador> etapa;
-        public int n;
+        private int n;
+
+        public int N { get => n; set => n = value; }
+
         public cListaEtapas(int n)
         {
             etapa = new List<ClassEmulador>(n);
-            this.n = n;
+            this.N = n;
         }
+        public cListaEtapas() { }
 
         public void crearEtapas(List<clCiclistas> lista)
         {
 
-            for (int y = 1; y <= n; y++)//recorre las etapas creandolas
+            for (int y = 1; y <= N; y++)//recorre las etapas creandolas
             {
                 ClassEmulador obj = new ClassEmulador();
                 obj.crearListaEtapas(lista);
@@ -163,6 +180,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 
             }
         }
+        
 
         public string sumarTiempo(int indice, List<clCiclistas> lista)//tiene que recorrer en un for() desde afuera en el form. El indice es el ciclista
         {
@@ -171,11 +189,11 @@ namespace WpfAppCompetenciaCiclistica.Clases
             int segundo = 0;
             string s;
 
-            for (int i = 0; i < n; i++)//recorre la lista de ciclistas para encontrar el tiempo, cada etapa es una i, el indice es el ciclista
+            for (int i = 0; i < N; i++)//recorre la lista de ciclistas para encontrar el tiempo, cada etapa es una i, el indice es el ciclista
             {
-                hora += etapa[i].listaCn[indice].getHora();
-                minuto += etapa[i].listaCn[indice].getMinuto();
-                segundo += etapa[i].listaCn[indice].getSegundo();
+                //hora += etapa[i].listaCn[indice].Hora();
+                //minuto += etapa[i].listaCn[indice].Minuto();
+                //segundo += etapa[i].listaCn[indice].Segundo();
             }
 
             s = hora + " : " + minuto + " : " + segundo;
