@@ -10,6 +10,18 @@
         xmlns:uc="clr-namespace:WpfAppCompetenciaCiclistica.Controles"
         mc:Ignorable="d"
         Title="Competencia Ciclística" Height="650" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button>
+                <iconPacks:PackIconModern Width="22" 
+                                          Height="22" 
+                                          Kind="Bike">
+                    
+                </iconPacks:PackIconModern>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+    
     <mah:MetroWindow.Resources>
         <src:clValidacion x:Key="clValidacion"></src:clValidacion>
         <Style x:Key="Nunito-Bold">
