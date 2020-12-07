@@ -874,6 +874,19 @@
                         <TextBlock Grid.Row="6" Text="País" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
                         <ComboBox Grid.Row="6" x:Name="comboBoxPaisCiclista" Height="24" Margin="230,13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210">
                             <ComboBoxItem Content="Ecuador"/>
+                            <ComboBoxItem Content="Perúr"/>
+                            <ComboBoxItem Content="Colombia"/>
+                            <ComboBoxItem Content="Francia"/>
+                            <ComboBoxItem Content="Panamá"/>
+                            <ComboBoxItem Content="Argentina"/>
+                            <ComboBoxItem Content="España"/>
+                            <ComboBoxItem Content="Brasil"/>
+                            <ComboBoxItem Content="Nueva Zelanda"/>
+                            <ComboBoxItem Content="Chile"/>
+                            <ComboBoxItem Content="Inglaterra"/>
+                            <ComboBoxItem Content="Paraguay"/>
+                            <ComboBoxItem Content="Uruguay"/>
+                            <ComboBoxItem Content="Venezuela"/>
                         </ComboBox>
                         <mah:MetroProgressBar Grid.Row="7" Margin="50,0,0,0" Minimum="0" Maximum="100" x:Name="statusCiclista" Height="26" Width="300" ></mah:MetroProgressBar>
                         <Button Grid.Row="8" x:Name="btnIngresarCiclista" Content="Ingresar"  Margin="210,-12,0,-40" FontSize="13" VerticalAlignment="Center" Height="35" HorizontalAlignment="Left" Width="127" Click="btnIngresarCiclista_Click" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
