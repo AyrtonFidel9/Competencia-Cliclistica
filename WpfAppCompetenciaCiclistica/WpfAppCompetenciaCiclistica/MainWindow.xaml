@@ -23,7 +23,7 @@
 
     <mah:MetroWindow.Resources>
         <src:clValidacion x:Key="clValidacion"></src:clValidacion>
-       
+
         <Style x:Key="Nunito-Bold">
             <Style.Setters>
                 <Setter Property="TextElement.FontFamily" Value="/Fonts/#Nunito Bold"></Setter>
@@ -78,7 +78,7 @@
 
         <!--ESPACIO DEL INICIO-->
 
-        <Grid x:Name="grInicio" HorizontalAlignment="Right" Margin="0,51,10,0" Width="885" Visibility="Visible" Grid.ColumnSpan="2">
+        <Grid x:Name="grInicio" HorizontalAlignment="Right" Margin="0,51,10,0" Width="885" Visibility="Hidden" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="320"/>
                 <RowDefinition Height="auto" />
@@ -161,7 +161,7 @@
 
 
         <!--ESPACIO DE LA COMPETENCIA-->
-        <Grid x:Name="grCompetencia" Height="570" VerticalAlignment="Bottom" Visibility="Hidden" HorizontalAlignment="Right" Width="895" Grid.ColumnSpan="2">
+        <Grid x:Name="grCompetencia" Height="570" VerticalAlignment="Bottom" Visibility="Visible" HorizontalAlignment="Right" Width="895" Grid.ColumnSpan="2">
             <DataGrid x:Name="DgClasificacion" HorizontalAlignment="Left" Height="416" Margin="351,124,0,0" VerticalAlignment="Top" 
                       Width="508" BorderThickness="1" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Khula SemiBold" FontSize="17">
                 <DataGrid.Columns>
@@ -203,7 +203,7 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-                <TextBlock x:Name="txtBPrimero" HorizontalAlignment="Left" Margin="121,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="15" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White">
+                <TextBlock x:Name="txtBPrimero" HorizontalAlignment="Left" Margin="116,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="15" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White" Width="83" Height="50">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -213,7 +213,7 @@
                         </TransformGroup>
                     </TextBlock.RenderTransform>
                 </TextBlock>
-                <TextBlock x:Name="txtBSegundo" HorizontalAlignment="Left" Margin="197,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White">
+                <TextBlock x:Name="txtBSegundo" HorizontalAlignment="Left" Margin="183,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White" Width="71">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -223,7 +223,7 @@
                         </TransformGroup>
                     </TextBlock.RenderTransform>
                 </TextBlock>
-                <TextBlock x:Name="txtBTercero" HorizontalAlignment="Left" Margin="43,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White">
+                <TextBlock x:Name="txtBTercero" HorizontalAlignment="Left" Margin="15,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito SemiBold" Foreground="White" Width="86" Height="23">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

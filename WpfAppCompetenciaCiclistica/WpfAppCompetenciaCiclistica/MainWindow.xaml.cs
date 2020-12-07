@@ -307,7 +307,7 @@ namespace WpfAppCompetenciaCiclistica
         private async void btnIngresarCiclista_Click(object sender, RoutedEventArgs e)
         {
             clValidacion objVal = new clValidacion();
-            if (cantIngresados < numCicli)
+            if (cantIngresados < numCicli || modciclista == true)
             {
                 try
                 {
@@ -357,10 +357,13 @@ namespace WpfAppCompetenciaCiclistica
                 if (modciclista)
                 {
                     dgCiclistas.Items.Clear();
-                    dgCiclistas.Items.Add(objc);
                     listCiclistas.Add(objc);
+                    
+                    foreach(clCiclistas indice in listCiclistas)
+                    {
+                        dgCiclistas.Items.Add(indice);
+                    }                  
                     modciclista = false;
-
                 }
                 else
                 {
