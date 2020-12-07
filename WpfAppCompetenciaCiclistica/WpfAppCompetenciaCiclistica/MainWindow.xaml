@@ -12,7 +12,7 @@
         Title="Competencia Ciclística" Height="650" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" >
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
-            <Button>
+            <Button x:Name="txtAyuda" Click="txtAyuda_Click">
                 <iconPacks:PackIconModern Width="22"
                                           Height="22"
                                           Kind="Bike">

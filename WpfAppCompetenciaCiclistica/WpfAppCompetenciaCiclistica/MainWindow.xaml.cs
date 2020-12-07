@@ -19,6 +19,7 @@ using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
+using System.Diagnostics;
 
 namespace WpfAppCompetenciaCiclistica
 {
@@ -302,19 +303,28 @@ namespace WpfAppCompetenciaCiclistica
             clValidacion objVal = new clValidacion();
             if (cantIngresados < numCicli)
             {
-                if(objVal.cadenas(txtNombreCiclista.Text) == true && objVal.cadenas(txtApellidoCiclista.Text)==true
+                try
+                {
+                    if (objVal.cadenas(txtNombreCiclista.Text) == true && objVal.cadenas(txtApellidoCiclista.Text) == true
                     && objVal.cedula(txtIDCiclista.Text) == true && objVal.cadenas(txtEquipoCiclista.Text) == true
                     && objVal.numeros(txtDorsalCiclista.Text) == true && comboBoxPaisCiclista.SelectedItem != null
-                    && objVal.tamanio(txtIDCiclista.Text) == true && int.Parse(txtDorsalCiclista.Text) > 0 || int.Parse(txtDorsalCiclista.Text) <= 1000)
-                {
-                    BackgroundWorker worker = new BackgroundWorker();
-                    worker.WorkerReportsProgress = true;
-                    worker.DoWork += worker_DoWork;
-                    worker.ProgressChanged += worker_ProgressChangedCiclista;
+                    && objVal.tamanio(txtIDCiclista.Text) == true && int.Parse(txtDorsalCiclista.Text) > 0
+                    && int.Parse(txtDorsalCiclista.Text) <= 1000)
+                    {
+                        BackgroundWorker worker = new BackgroundWorker();
+                        worker.WorkerReportsProgress = true;
+                        worker.DoWork += worker_DoWork;
+                        worker.ProgressChanged += worker_ProgressChangedCiclista;
 
-                    worker.RunWorkerAsync();
-                    cantIngresados++;
+                        worker.RunWorkerAsync();
+                        cantIngresados++;
+                    }
                 }
+                catch
+                {
+
+                }
+                
                
             }
             else
@@ -680,7 +690,8 @@ namespace WpfAppCompetenciaCiclistica
                     if (int.Parse(txtNumEtapa.Text) < 0 || int.Parse(txtNumEtapa.Text) >= 10)
                     {
                         await this.ShowMessageAsync("¡Atención!", "La cantidad máxima de Etapas permitida es 9, además no se admiten valores negativos. Intentelo de nuevo, por favor.");
-
+                        txtNumEtapa.Focus();
+                        txtNumEtapa.Clear();
                     }
                     else
                         rchDescripcionEtapa.Focus();
@@ -734,18 +745,20 @@ namespace WpfAppCompetenciaCiclistica
 
             //List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList();
 
-            obj.etapa[0].listaCn.Sort((x, y) => x.totalHoras().CompareTo(y.totalHoras()));
+            
 
             //List<ClassEmulador.cNewCiclista> SortedList = obj.etapa[0].listaCn.OrderBy(o => o.totalHoras).ToList();
 
-            for (int i = 0; i < listCiclistas.Count; i++)
-            {
-                DgClasificacion.Items.Add(obj.etapa[0].listaCn[i]);
-
-            }
+            
 
             try
             {
+                obj.etapa[0].listaCn.Sort((x, y) => x.totalHoras().CompareTo(y.totalHoras()));
+                for (int i = 0; i < listCiclistas.Count; i++)
+                {
+                    DgClasificacion.Items.Add(obj.etapa[0].listaCn[i]);
+
+                }
                 int a = listCiclistas.Count;
                 a--;
                 txtBPrimero.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
@@ -780,6 +793,11 @@ namespace WpfAppCompetenciaCiclistica
                     txtDorsalCiclista.Clear();
                 }
             }
+        }
+
+        private void txtAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("/Ayuda/ayudaFinal.html");
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)

@@ -320,5 +320,8 @@
   <ItemGroup>
     <Resource Include="Images\fondo2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ayudaFinal.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
