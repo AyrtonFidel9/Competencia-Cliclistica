@@ -62,9 +62,12 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 this.Equipo = equipo;
                 this.dorsal = numero;
                 this.hora = r.Next(1,8);
-                this.minuto = r.Next(0, 61);
-                this.segundo = r.Next(0, 61);
-                this.tiempo = hora + ":" + minuto + ":" + segundo;
+                this.minuto = r.Next(0, 60);
+                this.segundo = r.Next(0, 60);
+                if(this.minuto < 10)
+                    this.tiempo = hora + ":0" + minuto + ":" + segundo;
+                else
+                    this.tiempo = hora + ":" + minuto + ":" + segundo;
             }
             
 
@@ -111,8 +114,8 @@ namespace WpfAppCompetenciaCiclistica.Clases
             for (int i = 0; i < n; i++)
             {
                 int h = r.Next(8, 13);
-                int m = r.Next(0, 61);
-                int s = r.Next(0, 61);
+                int m = r.Next(0, 60);
+                int s = r.Next(0, 60);
                 listaCn.Add(crearObjetaListaCn(listaC[i], h, m, s));
             }
             ordenarLista();
