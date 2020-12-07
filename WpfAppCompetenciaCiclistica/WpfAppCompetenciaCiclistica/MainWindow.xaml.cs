@@ -20,16 +20,12 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
 
-
-
 namespace WpfAppCompetenciaCiclistica
 {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     /// 
-
-
 
     public partial class MainWindow : MetroWindow
     {
@@ -40,6 +36,7 @@ namespace WpfAppCompetenciaCiclistica
         List<clCompetencia> listaCompetencia = new List<clCompetencia>();
         Tile PanelModificar = new Tile();
         string NombreCompetencia;
+        int cantIngresados = 0;
         #endregion
 
         #region Funcion Principal
@@ -49,6 +46,7 @@ namespace WpfAppCompetenciaCiclistica
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+            
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -156,27 +154,50 @@ namespace WpfAppCompetenciaCiclistica
 
         private async void btnIngresarCompetencia_Click(object sender, RoutedEventArgs e)
         {
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChangedCompetencia;
+            clValidacion objVal = new clValidacion();
+            if(objVal.camposVacios(txtNombreCompetencia.Text) == true && objVal.cadenas(txtUbicacionCompetencia.Text) == true
+                && objVal.numeros(txtNumCorredoresCompetencia.Text) == true)
+            {
 
-            worker.RunWorkerAsync();
+                try
+                {
+                    if (int.Parse(txtNumCorredoresCompetencia.Text) > 0 && int.Parse(txtNumCorredoresCompetencia.Text) <= 50)
+                    {
+                        BackgroundWorker worker = new BackgroundWorker();
+                        worker.WorkerReportsProgress = true;
+                        worker.DoWork += worker_DoWork;
+                        worker.ProgressChanged += worker_ProgressChangedCompetencia;
 
+                        worker.RunWorkerAsync();
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Error", "La competencia admite máximo a 50 participates además no se admiten valores negativos");
+                        txtNumCorredoresCompetencia.Clear();
+                        txtNumCorredoresCompetencia.Focus();
+                    }
 
-            
-
+                }
+                catch
+                {
+                    await this.ShowMessageAsync("Error", "La competencia admite máximo a 50 participates.");
+                    txtNumCorredoresCompetencia.Clear();
+                    txtNumCorredoresCompetencia.Focus();
+                }
+            }
         }
         private async void worker_ProgressChangedCompetencia(object sender, ProgressChangedEventArgs e)
         {
             estadoCompetencia.Value = e.ProgressPercentage;
             if (estadoCompetencia.Value == 100)
             {
+             
                 NombreCompetencia = txtNombreCompetencia.Text;
+                numCicli = int.Parse(txtNumCorredoresCompetencia.Text);
                 ubicomp = txtUbicacionCompetencia.Text;
                 TextRange textRange = new TextRange(rchDescripcionCompetencia.Document.ContentStart, rchDescripcionCompetencia.Document.ContentEnd);
                 descripcion = textRange.Text;
-                numCicli = int.Parse(txtNumCorredoresCompetencia.Text);
+                
                 clCompetencia ciclista1 = new clCompetencia(NombreCompetencia, NombreCompetencia, descripcion, numCicli);
                 listaCompetencia.Add(ciclista1);
                 txtBTituloComp.Text = NombreCompetencia;
@@ -185,7 +206,7 @@ namespace WpfAppCompetenciaCiclistica
                 this.flyIngresoCompetencia.IsOpen = false;
                 limpiarFormCompetencia();
 
-                statusCiclista.Value = 0;
+                estadoCompetencia.Value = 0;
             }
         }
 
@@ -276,39 +297,29 @@ namespace WpfAppCompetenciaCiclistica
         }
 
         
-        private void btnIngresarCiclista_Click(object sender, RoutedEventArgs e)
+        private async void btnIngresarCiclista_Click(object sender, RoutedEventArgs e)
         {
+            clValidacion objVal = new clValidacion();
+            if (cantIngresados < numCicli)
+            {
+                if(objVal.cadenas(txtNombreCiclista.Text) == true && objVal.cadenas(txtApellidoCiclista.Text)==true
+                    && objVal.cedula(txtIDCiclista.Text) == true && objVal.cadenas(txtEquipoCiclista.Text) == true
+                    && objVal.numeros(txtDorsalCiclista.Text) == true && comboBoxPaisCiclista.SelectedItem != null
+                    && objVal.tamanio(txtIDCiclista.Text) == true && int.Parse(txtDorsalCiclista.Text) > 0 || int.Parse(txtDorsalCiclista.Text) <= 1000)
+                {
+                    BackgroundWorker worker = new BackgroundWorker();
+                    worker.WorkerReportsProgress = true;
+                    worker.DoWork += worker_DoWork;
+                    worker.ProgressChanged += worker_ProgressChangedCiclista;
 
-            
+                    worker.RunWorkerAsync();
+                    cantIngresados++;
+                }
+               
+            }
+            else
+                await this.ShowMessageAsync("¡Atención!","Los cupos para nuevos ciclistas se ha agotado.");
 
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChangedCiclista;
-
-            worker.RunWorkerAsync();
-
-            //if (modciclista)
-            //{
-            //    if(statusCiclista.Value == 100)
-            //    {
-            //        dgCiclistas.Items.Clear();
-            //        dgCiclistas.Items.Add(objc);
-            //        listCiclistas.Add(objc);
-            //        modciclista = false;
-            //    }
-
-            //}
-            //else
-            //{
-            //    if (statusCiclista.Value == 100)
-            //    {
-            //        //Uso de listas
-            //        listCiclistas.Add(objc);
-            //        dgCiclistas.Items.Add(objc);
-            //    }
-
-            //}
         }
 
         void worker_ProgressChangedCiclista(object sender, ProgressChangedEventArgs e)
@@ -348,6 +359,8 @@ namespace WpfAppCompetenciaCiclistica
                 txtEquipoCiclista.Clear();
                 txtDorsalCiclista.Clear();
                 this.flyIngresarCiclistas.IsOpen = false;
+
+                statusCiclista.Value = 0;
             }
         }
         private void btnAgregarCiclista_Click(object sender, RoutedEventArgs e)
@@ -458,10 +471,6 @@ namespace WpfAppCompetenciaCiclistica
 
             imagen1.Visibility = Visibility.Hidden;
 
-            
-            
-            
-
             lbl1.Visibility = Visibility.Visible;
             lbl2.Visibility = Visibility.Visible;
             lbl3.Visibility = Visibility.Visible;
@@ -524,7 +533,7 @@ namespace WpfAppCompetenciaCiclistica
 
 
 
-        private void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
+        private async void txtKilometrosEtapa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.A && e.Key <= Key.Z)
             {//(e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
@@ -532,8 +541,26 @@ namespace WpfAppCompetenciaCiclistica
             }
             if (e.Key == Key.Enter)
             {
-                txtUbicacionEtapa.Focus();
+                
+                try
+                {
+                    if (int.Parse(txtKilometrosEtapa.Text) < 0 || int.Parse(txtKilometrosEtapa.Text) > 200)
+                    {
+                        await this.ShowMessageAsync("¡Atención!", "La cantidad máxima de Kilómetros permitida es 200, además no se admiten valores negativos. Intentelo de nuevo, por favor.");
+                        txtKilometrosEtapa.Focus();
+                        txtKilometrosEtapa.Clear();
+                    }
+                    else
+                        txtUbicacionEtapa.Focus();
+                }
+                catch
+                {
+                    await this.ShowMessageAsync("¡Atención!", "La cantidad máxima de Kilómetros permitida es 200. Intentelo de nuevo, por favor.");
+                    txtKilometrosEtapa.Focus();
+                    txtKilometrosEtapa.Clear();
+                }
             }
+            
         }
 
 
@@ -546,15 +573,21 @@ namespace WpfAppCompetenciaCiclistica
         }
 
         
-        private async void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
+        private void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
         {
             //Uso de listas 
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChangedEtapa;
+            clValidacion objVal = new clValidacion();
+            if(objVal.numeros(txtKilometrosEtapa.Text) == true && objVal.cadenas(txtUbicacionEtapa.Text) == true 
+                && objVal.numeros(txtNumEtapa.Text) == true && int.Parse(txtNumEtapa.Text) > 0 && int.Parse(txtNumEtapa.Text) <= 9)
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.WorkerReportsProgress = true;
+                worker.DoWork += worker_DoWork;
+                worker.ProgressChanged += worker_ProgressChangedEtapa;
 
-            worker.RunWorkerAsync();
+                worker.RunWorkerAsync();
+            }
+            
         }
 
         private async void worker_ProgressChangedEtapa(object sender, ProgressChangedEventArgs e)
@@ -608,7 +641,7 @@ namespace WpfAppCompetenciaCiclistica
 
                 this.flyIngresoEtapa.IsOpen = false;
 
-                statusCiclista.Value = 0;
+                estadoEtapa.Value = 0;
             }
         }
 
@@ -638,11 +671,26 @@ namespace WpfAppCompetenciaCiclistica
 
         
 
-        private void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
+        private async void txtNumEtapa_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                rchDescripcionEtapa.Focus();
+                try
+                {
+                    if (int.Parse(txtNumEtapa.Text) < 0 || int.Parse(txtNumEtapa.Text) >= 10)
+                    {
+                        await this.ShowMessageAsync("¡Atención!", "La cantidad máxima de Etapas permitida es 9, además no se admiten valores negativos. Intentelo de nuevo, por favor.");
+
+                    }
+                    else
+                        rchDescripcionEtapa.Focus();
+                }
+                catch
+                {
+                    await this.ShowMessageAsync("¡Atención!", "La cantidad máxima de Etapas permitida es 9. Intentelo de nuevo, por favor.");
+                    txtNumEtapa.Focus();
+                    txtNumEtapa.Clear();
+                }
             }
         }
         #endregion
@@ -706,6 +754,28 @@ namespace WpfAppCompetenciaCiclistica
             }
             
 
+        }
+
+        private async void txtDorsalCiclista_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    if (int.Parse(txtDorsalCiclista.Text) < 0 || int.Parse(txtDorsalCiclista.Text) > 1000)
+                    {
+                        await this.ShowMessageAsync("¡Atención!", "La cantidad máxima permitida de un dorsal es 1000, además no se admiten valores negativos. Intentelo de nuevo, por favor.");
+
+                    }
+                    
+                }
+                catch
+                {
+                    await this.ShowMessageAsync("¡Atención!", "La cantidad máxima permitida de un dorsal es 1000. Intentelo de nuevo, por favor.");
+                    txtDorsalCiclista.Focus();
+                    txtDorsalCiclista.Clear();
+                }
+            }
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)

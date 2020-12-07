@@ -75,96 +75,9 @@
 
         <!--ESPACIO DEL INICIO-->
 
-        <mah:HamburgerMenu x:Name="menu"
-            Foreground="White"
-             OpenPaneLength="240" 
-            DisplayMode="CompactInline" CompactPaneLength="48" PaneBackground="#205169"
-            HamburgerHeight="48" IsPaneOpen="False" ItemClick="HamburgerMenuControl_ItemClick" OptionsItemClick="HamburgerMenuControl_OnItemClick" ItemInvoked="menu_ItemInvoked" Grid.ColumnSpan="2">
-            <mah:HamburgerMenu.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="50">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="48"/>
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid x:Name="IconPart" Grid.Column="0"
-                          Width="{Binding CompactPaneLength, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}"
-                          DockPanel.Dock="Left">
-                            <Image Margin="4,10,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Source="{Binding Glyph}" Height="33" Width="38"/>
-                        </Grid>
-                        <TextBlock Grid.Column="1"
-                            VerticalAlignment="Center"
-                            FontSize="20"
-                            Foreground="White"
-                            Text="{Binding Label}" />
-                    </Grid>
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding PanePlacement, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}" Value="Right">
-                            <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
-                            <!--<Setter TargetName="TextPart" Property="Margin" Value="8 0 0 0" />-->
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-
-                </DataTemplate>
-
-            </mah:HamburgerMenu.ItemTemplate>
-
-            <mah:HamburgerMenu.ItemsSource>
-                <mah:HamburgerMenuItemCollection>
-                    <mah:HamburgerMenuGlyphItem x:Name="pesInicio" Glyph="/Images/casa.png" Label="Inicio" Tag="Inicio"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/competencia.png" Label="Competencia" Tag="Competencia"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ruta.png" Label="Etapas" Tag="Etapas"/>
-                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ciclista.png" Label="Ciclistas" Tag="Ciclistas"/>
-                </mah:HamburgerMenuItemCollection>
-            </mah:HamburgerMenu.ItemsSource>
-            <mah:HamburgerMenu.ContentTemplate>
-                <DataTemplate>
-                    <Grid x:Name="ContentGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="48" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Border Grid.Row="0"
-                                    Margin="-1 0 -1 0"
-                                    Background="#205169">
-                            <TextBlock x:Name="txtHeader"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="24"
-                                           Foreground="White"
-                                            FontWeight="Bold" Text=""/>
-
-                        </Border>
-                        <mah:TransitioningContentControl Grid.Row="1"
-                                                             Content="{Binding}"
-                                                             RestartTransitionOnContentChange="True"
-                                                             Transition="Default">
-                            <mah:TransitioningContentControl.Resources>
-                                <DataTemplate DataType="{x:Type mah:HamburgerMenuGlyphItem}">
-                                    <Image Source="{Binding Glyph, Converter={mah:NullToUnsetValueConverter}, Mode=OneWay}" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type mah:HamburgerMenuIconItem}">
-                                    <ContentControl Content="{Binding Tag, Mode=OneWay}"
-                                                        Focusable="True"
-                                                        IsTabStop="False" />
-                                </DataTemplate>
-                            </mah:TransitioningContentControl.Resources>
-                        </mah:TransitioningContentControl>
-                    </Grid>
-                </DataTemplate>
-            </mah:HamburgerMenu.ContentTemplate>
-            <!--<Frame x:Name="frNavegacion" HorizontalAlignment="Right" Height="573" Width="896"
-                    NavigationUIVisibility="Hidden" Source="/Controles/Inicio.xaml" />-->
-
-
-        </mah:HamburgerMenu>
-
         <!--ESPACIO DEL INICIO-->
 
-        <Grid x:Name="grInicio" HorizontalAlignment="Right" Margin="0,51,10,0" Width="885" Visibility="Hidden" Grid.ColumnSpan="2">
+        <Grid x:Name="grInicio" HorizontalAlignment="Right" Margin="0,51,10,0" Width="885" Visibility="Visible" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="320"/>
                 <RowDefinition Height="auto" />
@@ -483,7 +396,7 @@
 
 
         <!--ESPACIO ETAPAS-->
-        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Visible" Grid.ColumnSpan="2">
+        <Grid x:Name="grEtapas" HorizontalAlignment="Right" Width="895" Height="570" VerticalAlignment="Bottom" Visibility="Hidden" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="110"/>
                 <RowDefinition Height="auto"/>
@@ -511,7 +424,13 @@
                     <RowDefinition Height="461"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19" Background="White">
+                <Grid Grid.Row="0" Grid.Column="0" Margin="27,10,21,19">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFC7C7C7" Offset="1"/>
+                            <GradientStop Color="#FFF3F3F3"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"/>
                     <Label x:Name="lbl1" Content="Km" FontSize="20" HorizontalAlignment="Left" Margin="58,100,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
                     <Label x:Name="lbl2" Content="Ubicación" FontSize="20" HorizontalAlignment="Left" Margin="58,150,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
@@ -859,7 +778,7 @@
                         <TextBlock Grid.Row="5" Text="Dorsal" FontSize="20" RenderTransformOrigin="0.581,0.206" Margin="100,16,216,0" VerticalAlignment="Top" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Rubik"/>
                         <TextBox Grid.Row="5" x:Name="txtDorsalCiclista" Height="24" Margin="230,16,0,0" 
                                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="210"  FontSize="15"
-                                 KeyDown="txtEquipo_KeyDown"    Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
+                                 KeyDown="txtDorsalCiclista_KeyDown"    Style="{StaticResource validacion1}" HorizontalContentAlignment="Center">
                             <TextBox.Text>
                                 <Binding Path="Dorsal" Source="{StaticResource clValidacion}" 
                                                  ValidatesOnExceptions="True"
@@ -910,7 +829,94 @@
 
 
 
-        <TextBlock x:Name="txtBTitulo" Margin="375,0,108.5,575"  TextAlignment="Center" FontSize="34" Foreground="White" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
+        <mah:HamburgerMenu x:Name="menu"
+            Foreground="White"
+             OpenPaneLength="240" 
+            DisplayMode="CompactInline" CompactPaneLength="48" PaneBackground="#205169"
+            HamburgerHeight="48" IsPaneOpen="False" ItemClick="HamburgerMenuControl_ItemClick" OptionsItemClick="HamburgerMenuControl_OnItemClick" ItemInvoked="menu_ItemInvoked" Grid.ColumnSpan="2">
+            <mah:HamburgerMenu.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="IconPart" Grid.Column="0"
+                          Width="{Binding CompactPaneLength, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}"
+                          DockPanel.Dock="Left">
+                            <Image Margin="4,10,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Source="{Binding Glyph}" Height="33" Width="38"/>
+                        </Grid>
+                        <TextBlock Grid.Column="1"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Foreground="White"
+                            Text="{Binding Label}" />
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding PanePlacement, RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}}" Value="Right">
+                            <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
+                            <!--<Setter TargetName="TextPart" Property="Margin" Value="8 0 0 0" />-->
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+
+                </DataTemplate>
+
+            </mah:HamburgerMenu.ItemTemplate>
+
+            <mah:HamburgerMenu.ItemsSource>
+                <mah:HamburgerMenuItemCollection>
+                    <mah:HamburgerMenuGlyphItem x:Name="pesInicio" Glyph="/Images/casa.png" Label="Inicio" Tag="Inicio"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/competencia.png" Label="Competencia" Tag="Competencia"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ruta.png" Label="Etapas" Tag="Etapas"/>
+                    <mah:HamburgerMenuGlyphItem Glyph="/Images/ciclista.png" Label="Ciclistas" Tag="Ciclistas"/>
+                </mah:HamburgerMenuItemCollection>
+            </mah:HamburgerMenu.ItemsSource>
+            <mah:HamburgerMenu.ContentTemplate>
+                <DataTemplate>
+                    <Grid x:Name="ContentGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                    Margin="-1 0 -1 0"
+                                    Background="#205169">
+                            <TextBlock x:Name="txtHeader"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="24"
+                                           Foreground="White"
+                                            FontWeight="Bold" Text=""/>
+
+                        </Border>
+                        <mah:TransitioningContentControl Grid.Row="1"
+                                                             Content="{Binding}"
+                                                             RestartTransitionOnContentChange="True"
+                                                             Transition="Default">
+                            <mah:TransitioningContentControl.Resources>
+                                <DataTemplate DataType="{x:Type mah:HamburgerMenuGlyphItem}">
+                                    <Image Source="{Binding Glyph, Converter={mah:NullToUnsetValueConverter}, Mode=OneWay}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type mah:HamburgerMenuIconItem}">
+                                    <ContentControl Content="{Binding Tag, Mode=OneWay}"
+                                                        Focusable="True"
+                                                        IsTabStop="False" />
+                                </DataTemplate>
+                            </mah:TransitioningContentControl.Resources>
+                        </mah:TransitioningContentControl>
+                    </Grid>
+                </DataTemplate>
+            </mah:HamburgerMenu.ContentTemplate>
+            <!--<Frame x:Name="frNavegacion" HorizontalAlignment="Right" Height="573" Width="896"
+                    NavigationUIVisibility="Hidden" Source="/Controles/Inicio.xaml" />-->
+
+
+        </mah:HamburgerMenu>
+        <TextBlock x:Name="txtBTitulo" Text="Inicio" Margin="375,0,108.5,575"  TextAlignment="Center" FontSize="34" Foreground="White" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
+
 
 
 
