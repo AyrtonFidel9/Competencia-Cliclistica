@@ -724,7 +724,7 @@ namespace WpfAppCompetenciaCiclistica
 }
 
 /* para ordenar se crea otra lista y se guarda en ella de forma ordenada
- List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList(); 
+ * List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList();
  */
 
 

@@ -149,7 +149,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
                         hsj = listaCn[j].Hora() * 3600;
                         msj = listaCn[j].Minuto() * 60;
                         sj = hsj + msj + listaCn[j].Segundo();
-                        if (si > sj)
+                        if (si < sj)
                         {
                             objAux = listaCn[j];
                             listaCn[j] = listaCn[i];
