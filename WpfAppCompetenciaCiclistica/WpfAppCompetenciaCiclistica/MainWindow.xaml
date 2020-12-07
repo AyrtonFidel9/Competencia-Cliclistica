@@ -432,15 +432,15 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <TextBlock Text="Información" Margin="10,6,10,399" FontSize="20" FontWeight="Bold"/>
-                    <Label x:Name="lbl1" Content="Km" FontSize="20" HorizontalAlignment="Left" Margin="58,100,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
-                    <Label x:Name="lbl2" Content="Ubicación" FontSize="20" HorizontalAlignment="Left" Margin="58,150,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-                    <Label x:Name="lbl3" Content="Número de etapa" FontSize="20" HorizontalAlignment="Left" Margin="58,200,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-                    <Label x:Name="lbl4" Content="Descripcion" FontSize="20" HorizontalAlignment="Left" Margin="58,250,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
-                    <Label x:Name="lblDescipcion" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="58,300,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
-                    <Label x:Name="lblKilometros" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.907,1.058" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
-                    <Label x:Name="lblUbicacion" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,150,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
-                    <Label x:Name="lblNumero" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,200,0,0" VerticalAlignment="Top" Visibility="Visible" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
-                    <Image Margin="0,40,0,0" x:Name="imagen1" Stretch="Fill" Visibility="Hidden" Source="Images/fondo2.jpg"/>
+                    <Label x:Name="lbl1" Content="Km" FontSize="20" HorizontalAlignment="Left" Margin="58,100,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold" />
+                    <Label x:Name="lbl2" Content="Ubicación" FontSize="20" HorizontalAlignment="Left" Margin="58,150,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                    <Label x:Name="lbl3" Content="Número de etapa" FontSize="20" HorizontalAlignment="Left" Margin="58,200,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                    <Label x:Name="lbl4" Content="Descripcion" FontSize="20" HorizontalAlignment="Left" Margin="58,250,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold"/>
+                    <Label x:Name="lblDescipcion" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="58,300,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
+                    <Label x:Name="lblKilometros" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.907,1.058" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
+                    <Label x:Name="lblUbicacion" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,150,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
+                    <Label x:Name="lblNumero" Content="-" FontSize="20" HorizontalAlignment="Left" Margin="270,200,0,0" VerticalAlignment="Top" Visibility="Hidden" FontFamily="/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito Light"/>
+                    <Image Margin="0,40,0,0" x:Name="imagen1" Stretch="Fill" Visibility="Visible" Source="Images/fondo2.jpg"/>
                     <!--<Grid x:Name="grdPodioEtapa" Grid.Row="0" HorizontalAlignment="Left" Height="251" Margin="10,171,0,0" VerticalAlignment="Top" Width="427" Visibility="Hidden">
                         <Grid.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -506,7 +506,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="338,177,0,0" TextWrapping="Wrap" Text="2" FontSize="40" VerticalAlignment="Top" Width="60"/>
                         <TextBlock HorizontalAlignment="Left" Margin="68,177,0,0" TextWrapping="Wrap" Text="3" FontSize="40" VerticalAlignment="Top" Width="51"/>
                     </Grid>-->
-                    <!--<Image  Margin="10,200,5,2" x:Name="pbImagen1"  Stretch="Fill" Visibility="Hidden"/>-->
+                    <!--<Image  Margin="10,200,5,2" x:Name="pbImagen1"  Stretch="Fill" Visibility="vis"/>-->
 
 
 

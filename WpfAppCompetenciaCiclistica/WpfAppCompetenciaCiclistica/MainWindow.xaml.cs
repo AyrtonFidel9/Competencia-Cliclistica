@@ -723,18 +723,22 @@ namespace WpfAppCompetenciaCiclistica
             }
         }
 
-        
+
 
         private async void tlSimular_Click(object sender, RoutedEventArgs e)
         {
             EnumVisual(stack);
             cListaEtapas obj = new cListaEtapas(contEtapa);
-            
-            
-            obj.crearEtapas(listCiclistas);
-            
 
-            for (int i = 0; i< listCiclistas.Count; i++)
+            obj.crearEtapas(listCiclistas);
+
+            //List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList();
+
+            obj.etapa[0].listaCn.Sort((x, y) => x.totalHoras().CompareTo(y.totalHoras()));
+
+            //List<ClassEmulador.cNewCiclista> SortedList = obj.etapa[0].listaCn.OrderBy(o => o.totalHoras).ToList();
+
+            for (int i = 0; i < listCiclistas.Count; i++)
             {
                 DgClasificacion.Items.Add(obj.etapa[0].listaCn[i]);
 
@@ -744,9 +748,9 @@ namespace WpfAppCompetenciaCiclistica
             {
                 int a = listCiclistas.Count;
                 a--;
-                txtBPrimero.Text = obj.etapa[0].listaCn[a].Nombre + " " + obj.etapa[0].listaCn[a].Apellido;
-                txtBSegundo.Text = obj.etapa[0].listaCn[a-1].Nombre + " " + obj.etapa[0].listaCn[a-1].Apellido;
-                txtBTercero.Text = obj.etapa[0].listaCn[a-2].Nombre + " " + obj.etapa[0].listaCn[a-2].Apellido;
+                txtBPrimero.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
+                txtBSegundo.Text = obj.etapa[0].listaCn[1].Nombre + " " + obj.etapa[0].listaCn[1].Apellido;
+                txtBTercero.Text = obj.etapa[0].listaCn[2].Nombre + " " + obj.etapa[0].listaCn[2].Apellido;
             }
             catch
             {
