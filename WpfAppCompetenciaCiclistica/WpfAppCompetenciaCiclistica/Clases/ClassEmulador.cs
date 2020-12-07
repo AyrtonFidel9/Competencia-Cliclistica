@@ -47,11 +47,16 @@ namespace WpfAppCompetenciaCiclistica.Clases
             private int minuto ;
             private int segundo;
 
+            private int Totalhoras;
+
+
+
             public string Nombre { get => nombre; set => nombre = value; }
             public string Apellido { get => apellido; set => apellido = value; }
             public string Equipo { get => equipo; set => equipo = value; }
             public string Dorsal { get => dorsal; set => dorsal = value; }
             public string Tiempo { get => tiempo; set => tiempo = value; }
+
 
             public cNewCiclista() { }
 
@@ -65,9 +70,17 @@ namespace WpfAppCompetenciaCiclistica.Clases
                 this.minuto = r.Next(0, 60);
                 this.segundo = r.Next(0, 60);
                 if(this.minuto < 10)
+                {
                     this.tiempo = hora + ":0" + minuto + ":" + segundo;
+                    this.Totalhoras = int.Parse(hora + "0" + minuto + segundo);
+                }
+                    
                 else
+                {
                     this.tiempo = hora + ":" + minuto + ":" + segundo;
+                    this.Totalhoras = int.Parse(hora.ToString() +minuto.ToString() + segundo.ToString());
+                }
+                    
             }
             
 
@@ -75,6 +88,7 @@ namespace WpfAppCompetenciaCiclistica.Clases
             public int Hora() { return hora; }
             public int Minuto() { return minuto; }
             public int Segundo() { return segundo; }
+            public int totalHoras() { return Totalhoras; }
             public void sSegundo(int val) { segundo = segundo - val; }
             private string tiempo;
 
@@ -137,27 +151,33 @@ namespace WpfAppCompetenciaCiclistica.Clases
         public void ordenarLista()
         {
             cNewCiclista objAux;
+            /*
             int hsi, msi, si;
-            int hsj, msj, sj;
+            int hsj, msj, sj;*/
             for(int i = 0; i < listaCn.Count; i++)
             {
                 for(int j = 1; j < listaCn.Count; j++)
                 {
                     if (listaCn.Count != 1)
                     {
-                        hsi = listaCn[i].Hora() * 3600;
-                        msi = listaCn[i].Minuto() * 60;
-                        si = hsi + msi + listaCn[i].Segundo();
-
-                        hsj = listaCn[j].Hora() * 3600;
-                        msj = listaCn[j].Minuto() * 60;
-                        sj = hsj + msj + listaCn[j].Segundo();
-                        if (si < sj)
+                        if(listaCn[i].totalHoras() < listaCn[j].totalHoras())
                         {
+                            /*
+                           hsi = listaCn[i].Hora() * 3600;
+                           msi = listaCn[i].Minuto() * 60;
+                           si = hsi + msi + listaCn[i].Segundo();
+
+                           hsj = listaCn[j].Hora() * 3600;
+                           msj = listaCn[j].Minuto() * 60;
+                           sj = hsj + msj + listaCn[j].Segundo();
+                           if (si < sj)
+                           {
+                               objAux = listaCn[j];
+                               listaCn[j] = listaCn[i];
+                               listaCn[i] = objAux;*/
                             objAux = listaCn[j];
                             listaCn[j] = listaCn[i];
                             listaCn[i] = objAux;
-
                         }
 
                     }

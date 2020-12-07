@@ -684,6 +684,11 @@ namespace WpfAppCompetenciaCiclistica
 
             obj.crearEtapas(listCiclistas);
 
+            //List<Order> SortedList = objListOrder.OrderBy(o=>o.OrderDate).ToList();
+
+            obj.etapa[0].listaCn.Sort((x, y) => x.totalHoras().CompareTo(y.totalHoras()));
+
+            //List<ClassEmulador.cNewCiclista> SortedList = obj.etapa[0].listaCn.OrderBy(o => o.totalHoras).ToList();
 
             for (int i = 0; i < listCiclistas.Count; i++)
             {
