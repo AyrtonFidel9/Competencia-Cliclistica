@@ -203,7 +203,7 @@ namespace WpfAppCompetenciaCiclistica
                 listaCompetencia.Remove(competencia);
             }
             else
-                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. Ingrese una, por favor.");
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. \nIngrese una, por favor.");
 
 
 
@@ -224,7 +224,7 @@ namespace WpfAppCompetenciaCiclistica
                 this.flyIngresoCompetencia.IsOpen = true;
             }
             else
-                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. Ingrese una, por favor.");
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna competencia. \nIngrese una, por favor.");
         }
 
         private void btnAgregarCompetencia_Click(object sender, RoutedEventArgs e)
@@ -412,6 +412,8 @@ namespace WpfAppCompetenciaCiclistica
             panel.Margin = new Thickness(5, 20, 5, 5);
             panel.HorizontalAlignment = HorizontalAlignment.Center;
             panel.VerticalAlignment = VerticalAlignment.Center;
+            panel.FontSize = 20;
+            panel.FontFamily = new FontFamily("/WpfAppCompetenciaCiclistica;component/Fonts/#Nunito ExtraBold");
 
             panel.Click += panel_Click; //se añade el evento
 
@@ -421,14 +423,23 @@ namespace WpfAppCompetenciaCiclistica
 
         private async void btnEliminarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea eliminar");
-            eliminar = true;
+            if (listEtapas.Count != 0)
+            {
+                await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea eliminar");
+                eliminar = true;
+            }
+            else
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna etapa. \nIngrese una, por favor.");
         }
         private async void btnModificarEtapa_Click(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea modificar");
-            modificar = true;
-
+            if (listEtapas.Count != 0)
+            {
+                await this.ShowMessageAsync("Aviso", "Pulse la etapa que desea modificar");
+                modificar = true;
+            }
+            else
+                await this.ShowMessageAsync("¡Atención!", "No se ha ingresado ninguna etapa. \nIngrese una, por favor.");
         }
         private void panel_Click(object sender, RoutedEventArgs e)
         {
@@ -448,8 +459,6 @@ namespace WpfAppCompetenciaCiclistica
             imagen1.Visibility = Visibility.Hidden;
 
             
-            
-            grdPodioEtapa.Visibility = Visibility.Visible;
             
             
 
@@ -539,9 +548,6 @@ namespace WpfAppCompetenciaCiclistica
         
         private async void btnIngresarEtapa_Click(object sender, RoutedEventArgs e)
         {
-
-            
-
             //Uso de listas 
             BackgroundWorker worker = new BackgroundWorker();
             worker.WorkerReportsProgress = true;
@@ -549,47 +555,6 @@ namespace WpfAppCompetenciaCiclistica
             worker.ProgressChanged += worker_ProgressChangedEtapa;
 
             worker.RunWorkerAsync();
-
-
-
-
-
-            //Etapa numetapa = listEtapas.FirstOrDefault(x => x.numero == int.Parse(txtNumEtapa.Text));
-
-            //if (modificar)
-            //{
-            //    if (numetapa == null)
-            //    {
-            //        PanelModificar.Content = "Etapa " + txtNumEtapa.Text;
-            //        listEtapas.Add(objetapa);
-            //        modificar = false;
-            //    } else
-            //    {
-            //        await this.ShowMessageAsync("Aviso", "Número de etapa ya existe");
-            //    }
-            //}
-            //else
-            //{
-
-            //    //MessageBox.Show(numetapa.numero.ToString());
-            //    if (numetapa == null)
-            //    {
-            //        listEtapas.Add(objetapa);
-            //        crearTilesEtapas("Etapa " + objetapa.numero);
-            //    }
-            //    else
-            //        await this.ShowMessageAsync("Aviso", "Número de etapa ya existe");
-            //}
-
-
-
-            //txtKilometrosEtapa.Clear();
-            //txtNumEtapa.Clear();
-            //rchDescripcionEtapa.Document.Blocks.Clear();
-            //txtUbicacionEtapa.Clear();
-
-
-
         }
 
         private async void worker_ProgressChangedEtapa(object sender, ProgressChangedEventArgs e)
@@ -712,7 +677,7 @@ namespace WpfAppCompetenciaCiclistica
 
         
 
-        private void tlSimular_Click(object sender, RoutedEventArgs e)
+        private async void tlSimular_Click(object sender, RoutedEventArgs e)
         {
             EnumVisual(stack);
             cListaEtapas obj = new cListaEtapas(contEtapa);
@@ -727,10 +692,19 @@ namespace WpfAppCompetenciaCiclistica
 
             }
 
+            try
+            {
+                int a = listCiclistas.Count;
+                a--;
+                txtBPrimero.Text = obj.etapa[0].listaCn[a].Nombre + " " + obj.etapa[0].listaCn[a].Apellido;
+                txtBSegundo.Text = obj.etapa[0].listaCn[a-1].Nombre + " " + obj.etapa[0].listaCn[a-1].Apellido;
+                txtBTercero.Text = obj.etapa[0].listaCn[a-2].Nombre + " " + obj.etapa[0].listaCn[a-2].Apellido;
+            }
+            catch
+            {
+                await this.ShowMessageAsync("¡Advertencia!","No existen datos para hacer la simulación");
+            }
             
-            txtBPrimero.Text = obj.etapa[0].listaCn[0].Nombre + " " + obj.etapa[0].listaCn[0].Apellido;
-            txtBSegundo.Text = obj.etapa[0].listaCn[1].Nombre + " " + obj.etapa[0].listaCn[1].Apellido;
-            txtBTercero.Text = obj.etapa[0].listaCn[2].Nombre + " " + obj.etapa[0].listaCn[2].Apellido;
 
         }
 
