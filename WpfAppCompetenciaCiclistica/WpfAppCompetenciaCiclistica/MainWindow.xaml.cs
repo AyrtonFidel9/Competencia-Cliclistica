@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
 using MahApps.Metro.Controls;
 using WpfAppCompetenciaCiclistica.Controles;
 using WpfAppCompetenciaCiclistica.Clases;
@@ -19,7 +20,9 @@ using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
+using System.Web;
 using System.Diagnostics;
+
 
 namespace WpfAppCompetenciaCiclistica
 {
@@ -797,7 +800,24 @@ namespace WpfAppCompetenciaCiclistica
 
         private void txtAyuda_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("/Ayuda/ayudaFinal.html");
+
+            ////string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Ayuda\ayudaFinal.html");
+            ////string[] files = File.ReadAllLines(path);
+            //string ruta = Directory.GetCurrentDirectory();
+            
+            ////Environment.CurrentDirectory = Environment.GetEnvironmentVariable("windir");
+            ////DirectoryInfo info = new DirectoryInfo(".");
+            ////var directory = Directory.GetCurrentDirectory();
+            ////string file =  System.IO.Path.Combine(directory, "ayudaFinal.html");
+            ////Process.Start(WpfAppCompetenciaCiclistica.Properties.Resources.ayudaFinal);
+            ////Console.WriteLine("Directory Info:   " + info.FullName);
+
+
+            ////MessageBox.Show(ruta);
+
+            ////Process.Start(ruta);
+            Process.Start("file:///C:/Users/fideb/OneDrive/Desktop/ayudaFinal.html");
+
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)

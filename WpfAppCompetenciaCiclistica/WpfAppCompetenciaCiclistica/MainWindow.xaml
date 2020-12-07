@@ -23,6 +23,7 @@
 
     <mah:MetroWindow.Resources>
         <src:clValidacion x:Key="clValidacion"></src:clValidacion>
+       
         <Style x:Key="Nunito-Bold">
             <Style.Setters>
                 <Setter Property="TextElement.FontFamily" Value="/Fonts/#Nunito Bold"></Setter>
