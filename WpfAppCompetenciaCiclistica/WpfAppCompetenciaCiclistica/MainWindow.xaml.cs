@@ -43,9 +43,6 @@ namespace WpfAppCompetenciaCiclistica
         #region Funcion Principal
         public MainWindow()
         {
-            WinAppLogin.Form1 form = new WinAppLogin.Form1();
-            form.ShowDialog();
-
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
